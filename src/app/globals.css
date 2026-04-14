@@ -8,6 +8,8 @@
   --color-vermillion: #C23B22;
   --color-vermillion-dark: #9B2F1B;
   --color-vermillion-light: #E8564A;
+  --color-gold: #C8A951;
+  --color-gold-light: #E8D08B;
   --color-border: #E5E0D8;
   --color-border-light: #F0EDE8;
   --color-surface: #FFFFFF;
@@ -19,6 +21,7 @@
   --color-foreground: var(--color-ink);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-headline: var(--font-noto-serif-jp), serif;
   --color-cream: var(--color-cream);
   --color-ink: var(--color-ink);
   --color-ink-light: var(--color-ink-light);
@@ -26,6 +29,8 @@
   --color-vermillion: var(--color-vermillion);
   --color-vermillion-dark: var(--color-vermillion-dark);
   --color-vermillion-light: var(--color-vermillion-light);
+  --color-gold: var(--color-gold);
+  --color-gold-light: var(--color-gold-light);
   --color-border: var(--color-border);
   --color-border-light: var(--color-border-light);
   --color-surface: var(--color-surface);
@@ -41,6 +46,38 @@ body {
   background-color: var(--color-vermillion);
   color: white;
 }
+
+/* Vertical writing for Japanese headlines */
+.writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* Organic blob shape */
+.blob-bg {
+  border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes float-delayed {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(-2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes scroll-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-delayed { animation: float-delayed 6s ease-in-out infinite; animation-delay: -3s; }
+.animate-scroll-line { animation: scroll-line 2s ease-in-out infinite; }
 
 .rich-text h2 {
   font-size: 1.5rem;
