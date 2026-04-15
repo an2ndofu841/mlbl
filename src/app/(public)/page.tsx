@@ -95,11 +95,13 @@ export default async function HomePage() {
                   )}
                 </div>
 
-                {/* Label plate */}
-                <div className="col-span-2 row-span-1 bg-gradient-to-r from-primary to-primary-dim overflow-hidden rounded-full -translate-x-4 flex items-center justify-center p-3 shadow-ambient">
-                  <span className="text-on-primary font-headline text-base md:text-xl tracking-[0.4em] font-black uppercase">
-                    Label
-                  </span>
+                {/* Video plate */}
+                <div className="col-span-2 row-span-1 overflow-hidden rounded-full -translate-x-4 shadow-ambient">
+                  <video
+                    src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
+                    autoPlay muted loop playsInline
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>
