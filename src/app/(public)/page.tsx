@@ -27,11 +27,11 @@ export default async function HomePage() {
   return (
     <>
       {/* ════════ Hero: The Kinetic Gallery ════════ */}
-      <section className="relative min-h-[75vh] flex flex-col md:flex-row items-center justify-between px-8 md:px-16 py-20 pt-28 overflow-hidden bg-surface-base">
+      <section className="relative flex flex-col md:flex-row items-center justify-between px-8 md:px-16 pt-28 md:pt-32 pb-12 md:pb-16 overflow-hidden bg-surface-base">
         {/* Ambient blobs */}
-        <div className="absolute top-20 -right-32 w-[420px] h-[420px] bg-primary-container/30 blob-bg -z-10 animate-float blur-2xl" />
-        <div className="absolute bottom-32 -left-24 w-80 h-80 bg-secondary-container/20 blob-bg -z-10 animate-float-delayed blur-xl" />
-        <div className="absolute top-1/2 left-1/3 w-48 h-48 bg-tertiary-container/15 rounded-full -z-10 animate-pulse-soft blur-2xl" />
+        <div className="absolute top-16 -right-24 w-72 h-72 bg-primary-container/30 blob-bg -z-10 animate-float blur-2xl" />
+        <div className="absolute bottom-16 -left-16 w-56 h-56 bg-secondary-container/20 blob-bg -z-10 animate-float-delayed blur-xl" />
+        <div className="absolute top-1/2 left-1/3 w-36 h-36 bg-tertiary-container/15 rounded-full -z-10 animate-pulse-soft blur-2xl" />
 
         {settings?.hero_background_url && (
           <img
@@ -42,52 +42,49 @@ export default async function HomePage() {
         )}
 
         {/* Left: Typography */}
-        <div className="z-10 order-2 md:order-1 mt-12 md:mt-0 flex flex-col items-center md:items-start">
-          <h1 className="writing-vertical font-headline text-5xl md:text-[6.5rem] tracking-[0.15em] leading-relaxed text-on-surface">
+        <div className="z-10 order-2 md:order-1 mt-8 md:mt-0 flex flex-col items-center md:items-start">
+          <h1 className="writing-vertical font-headline text-4xl md:text-6xl tracking-[0.12em] leading-snug text-on-surface">
             {settings?.hero_title ? (
               settings.hero_title
             ) : (
               <>心を、<br /><span className="text-primary">召し上がれ。</span></>
             )}
           </h1>
-          <p className="mt-8 md:mt-12 text-sm md:text-base text-on-surface-variant max-w-xs leading-relaxed text-center md:text-left"
+          <p className="mt-6 md:mt-8 text-sm text-on-surface-variant max-w-xs leading-relaxed text-center md:text-left"
             style={{ writingMode: 'horizontal-tb' }}
           >
             {settings?.hero_subtitle || '熱量と愛嬌で、エンタメを届けるレーベル。'}
           </p>
-          <div className="flex gap-3 mt-8" style={{ writingMode: 'horizontal-tb' }}>
-            <CTAButton href={settings?.hero_cta_primary_url || '/talent'} variant="primary" size="md">
+          <div className="flex gap-3 mt-6" style={{ writingMode: 'horizontal-tb' }}>
+            <CTAButton href={settings?.hero_cta_primary_url || '/talent'} variant="primary" size="sm">
               {settings?.hero_cta_primary_text || 'Talents'}
             </CTAButton>
-            <CTAButton href={settings?.hero_cta_secondary_url || '/about'} variant="outline" size="md">
+            <CTAButton href={settings?.hero_cta_secondary_url || '/about'} variant="outline" size="sm">
               {settings?.hero_cta_secondary_text || 'About'}
             </CTAButton>
           </div>
         </div>
 
         {/* Right: Photo collage */}
-        <div className="relative w-full md:w-3/5 order-1 md:order-2 flex justify-center items-center mb-8 md:mb-0">
-          <div className="relative w-full max-w-2xl aspect-square md:rotate-1 hover:rotate-0 transition-transform duration-700">
-            <div className="absolute inset-0 grid grid-cols-4 grid-rows-3 gap-3 md:gap-5">
-              {/* Main photo */}
-              <div className="col-span-3 row-span-2 bg-surface-low overflow-hidden rounded-3xl shadow-ambient-lg">
+        <div className="relative w-full md:w-1/2 order-1 md:order-2 flex justify-center items-center mb-6 md:mb-0">
+          <div className="relative w-full max-w-md aspect-[4/3] md:rotate-1 hover:rotate-0 transition-transform duration-700">
+            <div className="absolute inset-0 grid grid-cols-4 grid-rows-3 gap-2 md:gap-3">
+              <div className="col-span-3 row-span-2 bg-surface-low overflow-hidden rounded-2xl shadow-ambient-lg">
                 {artists[0]?.profile_image_url ? (
                   <img src={artists[0].profile_image_url} alt={artists[0].name}
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-surface-low to-surface-mid flex items-center justify-center">
-                    <span className="font-headline text-6xl text-outline/10">め</span>
+                    <span className="font-headline text-4xl text-outline/10">め</span>
                   </div>
                 )}
               </div>
 
-              {/* Pop-art accent */}
               <div className="col-span-1 row-span-1 bg-secondary overflow-hidden rounded-full rotate-6 flex items-center justify-center shadow-ambient">
-                <span className="text-on-secondary font-headline text-3xl">★</span>
+                <span className="text-on-secondary font-headline text-2xl">★</span>
               </div>
 
-              {/* Secondary photo */}
-              <div className="col-span-1 row-span-2 bg-surface-low overflow-hidden rounded-2xl shadow-ambient translate-y-6">
+              <div className="col-span-1 row-span-2 bg-surface-low overflow-hidden rounded-xl shadow-ambient translate-y-4">
                 {artists[1]?.profile_image_url ? (
                   <img src={artists[1].profile_image_url} alt={artists[1].name}
                     className="w-full h-full object-cover" />
@@ -96,21 +93,12 @@ export default async function HomePage() {
                 )}
               </div>
 
-              {/* Label plate */}
-              <div className="col-span-2 row-span-1 bg-gradient-to-r from-primary to-primary-dim overflow-hidden rounded-full -translate-x-6 flex items-center justify-center p-4 shadow-ambient">
-                <span className="text-on-primary font-headline text-lg md:text-2xl tracking-[0.4em] font-black uppercase">
+              <div className="col-span-2 row-span-1 bg-gradient-to-r from-primary to-primary-dim overflow-hidden rounded-full -translate-x-4 flex items-center justify-center p-3 shadow-ambient">
+                <span className="text-on-primary font-headline text-sm md:text-lg tracking-[0.4em] font-black uppercase">
                   Label
                 </span>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <span className="text-[10px] tracking-[0.3em] uppercase text-outline/40 font-semibold">Scroll</span>
-          <div className="w-px h-12 bg-outline/15 rounded-full overflow-hidden">
-            <div className="w-full h-1/2 bg-primary animate-scroll-line" />
           </div>
         </div>
       </section>
