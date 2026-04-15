@@ -209,55 +209,102 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* ════════ Talents — Pop-Art Frames ════════ */}
-      {artists.length > 0 && (
-        <section className="px-8 md:px-16 py-28 md:py-36 bg-surface-low rounded-[2rem] md:rounded-[3.5rem] mx-4 md:mx-8">
-          <div className="text-center mb-20">
-            <span className="font-bold text-[11px] tracking-[0.4em] uppercase text-secondary mb-4 block">Creative Minds</span>
-            <h2 className="font-headline text-5xl md:text-6xl font-black text-on-surface">Talents</h2>
-          </div>
+      {/* ════════ Talents — Editorial Showcase ════════ */}
+      {artists.length > 0 && (() => {
+        const badgeColors = [
+          'bg-secondary text-on-secondary',
+          'bg-primary text-on-primary',
+          'bg-tertiary text-on-tertiary',
+          'bg-on-surface text-surface-lowest',
+          'bg-secondary-container text-secondary',
+          'bg-primary-container text-primary-dim',
+        ]
+        const badgeRotations = ['-rotate-6', 'rotate-3', '-rotate-3', 'rotate-6', '-rotate-2', 'rotate-4']
+        const typeColors = ['text-secondary', 'text-primary', 'text-tertiary', 'text-on-surface/20', 'text-secondary/60', 'text-primary/40']
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 max-w-6xl mx-auto">
-            {artists.slice(0, 3).map((artist, i) => (
-              <Link key={artist.id} href={`/talent/${artist.slug}`}
-                className={`group text-center ${i === 1 ? 'md:translate-y-12' : ''}`}>
-                <div className="aspect-[4/5] bg-surface-lowest rounded-3xl overflow-hidden mb-6 relative shadow-ambient-lg group-hover:scale-[1.02] transition-transform duration-700">
-                  {artist.profile_image_url || artist.thumbnail_url ? (
-                    <img src={artist.profile_image_url || artist.thumbnail_url!} alt={artist.name}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-b from-surface-lowest to-surface-low flex items-center justify-center">
-                      <span className="text-6xl font-black text-outline/10">{artist.name.charAt(0)}</span>
-                    </div>
-                  )}
-                  {/* Pop-art accent bar */}
-                  <div className="absolute left-0 top-6 bottom-6 w-1 bg-secondary rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  {artist.member_color && (
-                    <div className="absolute bottom-0 inset-x-0 h-1" style={{ backgroundColor: artist.member_color }} />
-                  )}
+        return (
+          <section className="py-20 md:py-28 bg-surface-base overflow-hidden">
+            <div className="mx-auto max-w-7xl px-6 md:px-12 mb-12 md:mb-16">
+              <div className="flex items-end justify-between gap-4">
+                <div>
+                  <span className="text-[11px] font-bold tracking-[0.4em] uppercase text-secondary mb-3 block">Our Talents</span>
+                  <h2 className="font-headline text-4xl md:text-6xl font-black text-on-surface">Creative Minds</h2>
                 </div>
-                <span className="font-bold text-[11px] tracking-widest text-secondary mb-2 block uppercase">
-                  {artist.role || 'Artist'}
-                </span>
-                <h3 className="font-headline text-2xl md:text-3xl mb-3 text-on-surface">{artist.name}</h3>
-                {artist.short_copy && (
-                  <p className="text-sm text-on-surface-variant/60 leading-relaxed italic line-clamp-2">
-                    「{artist.short_copy}」
-                  </p>
-                )}
-              </Link>
-            ))}
-          </div>
+                <Link href="/talent" className="hidden md:flex font-semibold text-sm text-primary hover:text-primary-dim items-center gap-2 transition-colors group shrink-0">
+                  VIEW ALL <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </div>
 
-          {artists.length > 3 && (
-            <div className="text-center mt-16">
-              <CTAButton href="/talent" variant="outline" size="md">
-                すべてのアーティストを見る
+            {/* Horizontal scroll showcase */}
+            <div className="flex gap-6 md:gap-10 overflow-x-auto px-6 md:px-12 pb-8 snap-x snap-mandatory scrollbar-hide"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}>
+              {artists.slice(0, 6).map((artist, i) => (
+                <Link key={artist.id} href={`/talent/${artist.slug}`}
+                  className="group relative shrink-0 w-[260px] md:w-[340px] snap-center">
+                  {/* Giant role typography behind circle */}
+                  <div className="absolute -top-2 md:-top-4 left-0 right-0 flex justify-center pointer-events-none select-none z-0">
+                    <span className={`font-black text-5xl md:text-7xl tracking-tighter uppercase whitespace-nowrap ${typeColors[i % typeColors.length]}`}>
+                      {artist.role || 'Artist'}
+                    </span>
+                  </div>
+
+                  {/* Circle photo */}
+                  <div className="relative z-10 mx-auto w-[220px] h-[220px] md:w-[280px] md:h-[280px] mt-6 md:mt-8">
+                    <div className="w-full h-full rounded-full overflow-hidden shadow-ambient-lg group-hover:scale-105 transition-transform duration-700 bg-surface-low">
+                      {artist.profile_image_url || artist.thumbnail_url ? (
+                        <img src={artist.profile_image_url || artist.thumbnail_url!} alt={artist.name}
+                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-b from-surface-low to-surface-mid flex items-center justify-center">
+                          <span className="text-5xl font-black text-outline/10">{artist.name.charAt(0)}</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Angled name badge */}
+                    <div className={`absolute -bottom-2 -right-2 md:right-0 ${badgeRotations[i % badgeRotations.length]} z-20`}>
+                      <div className={`${badgeColors[i % badgeColors.length]} px-3 py-1.5 md:px-4 md:py-2 rounded-lg shadow-ambient`}>
+                        <span className="writing-vertical text-xs md:text-sm font-bold leading-tight">
+                          {artist.name}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Japanese subtitle */}
+                  <div className="mt-4 text-center relative z-10">
+                    <p className="text-xs font-bold text-on-surface-variant tracking-wider">
+                      {artist.english_name || artist.kana || ''}
+                    </p>
+                    {artist.short_copy && (
+                      <p className="mt-1 text-[11px] text-outline italic line-clamp-1">
+                        {artist.short_copy}
+                      </p>
+                    )}
+                  </div>
+                </Link>
+              ))}
+
+              {/* CTA card at end */}
+              <Link href="/talent"
+                className="group relative shrink-0 w-[200px] md:w-[260px] snap-center flex flex-col items-center justify-center">
+                <div className="w-[180px] h-[180px] md:w-[220px] md:h-[220px] mt-6 md:mt-8 rounded-full bg-surface-low flex flex-col items-center justify-center group-hover:bg-primary-container/40 transition-colors duration-500">
+                  <span className="text-3xl mb-2">→</span>
+                  <span className="text-sm font-bold text-on-surface-variant group-hover:text-primary transition-colors">View All</span>
+                </div>
+              </Link>
+            </div>
+
+            {/* Mobile CTA */}
+            <div className="md:hidden text-center mt-6 px-6">
+              <CTAButton href="/talent" variant="outline" size="sm">
+                すべてのタレントを見る
               </CTAButton>
             </div>
-          )}
-        </section>
-      )}
+          </section>
+        )
+      })()}
 
       {/* ════════ Special Banner ════════ */}
       {specials.length > 0 ? (
