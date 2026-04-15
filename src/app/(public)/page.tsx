@@ -109,7 +109,7 @@ export default async function HomePage() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 hero-stagger-5">
+        <div className="absolute bottom-4 left-8 md:left-16 flex flex-col items-center gap-1.5 hero-stagger-5">
           <span className="text-[10px] tracking-[0.3em] uppercase text-outline/40 font-semibold">Scroll</span>
           <div className="w-px h-8 bg-outline/15 rounded-full overflow-hidden">
             <div className="w-full h-1/2 bg-primary animate-scroll-line" />
