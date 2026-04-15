@@ -15,6 +15,7 @@ import {
   Settings,
   PanelTop,
   Search,
+  ImageIcon,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -28,6 +29,7 @@ const NAV_ITEMS = [
   { label: 'オーディション', href: '/admin/auditions', icon: Mic },
   { label: '固定ページ', href: '/admin/pages', icon: BookOpen },
   { label: 'お問い合わせ', href: '/admin/contacts', icon: Mail },
+  { label: 'メディア', href: '/admin/media', icon: ImageIcon },
   { label: 'トップページ設定', href: '/admin/top-settings', icon: PanelTop },
   { label: 'SEO設定', href: '/admin/seo', icon: Search },
   { label: '共通設定', href: '/admin/settings', icon: Settings },
