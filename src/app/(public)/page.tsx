@@ -42,20 +42,62 @@ export default async function HomePage() {
           />
         )}
 
-        <div className="flex flex-row md:grid md:grid-cols-[1fr_1.5fr] items-center gap-4 md:gap-8 px-6 md:px-12 lg:px-20 pt-24 md:pt-28 pb-8">
-          {/* Left: Typography — horizontal on SP, vertical on PC */}
-          <div className="z-10 flex flex-col items-center shrink-0">
-            <h1 className="writing-vertical font-headline text-on-surface hero-stagger-1 text-3xl md:text-5xl lg:text-[3.5rem] tracking-[0.12em] leading-snug">
+        {/* ── SP: Center text with scattered videos ── */}
+        <div className="md:hidden relative min-h-[calc(100dvh-4rem)] flex flex-col items-center justify-center px-6 pt-20 pb-10">
+          {/* Scattered videos around text */}
+          <div className="absolute top-20 right-4 w-28 h-20 rounded-2xl overflow-hidden shadow-ambient hero-stagger-2 rotate-3">
+            <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
+              autoPlay muted loop playsInline className="w-full h-full object-cover" />
+          </div>
+          <div className="absolute top-36 left-3 w-20 h-20 rounded-full overflow-hidden shadow-ambient hero-stagger-3 -rotate-6">
+            <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
+              autoPlay muted loop playsInline className="w-full h-full object-cover" />
+          </div>
+          <div className="absolute bottom-28 right-6 w-24 h-32 rounded-2xl overflow-hidden shadow-ambient hero-stagger-4 rotate-6">
+            <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
+              autoPlay muted loop playsInline className="w-full h-full object-cover" />
+          </div>
+          <div className="absolute bottom-24 left-4 w-16 h-16 rounded-full bg-secondary flex items-center justify-center shadow-ambient hero-stagger-2">
+            <span className="text-on-secondary font-headline text-xl">★</span>
+          </div>
+
+          {/* Center text */}
+          <div className="relative z-10 flex flex-col items-center">
+            <h1 className="writing-vertical font-headline text-4xl tracking-[0.12em] leading-snug text-on-surface hero-stagger-1">
               {settings?.hero_title ? (
                 settings.hero_title
               ) : (
                 <>心を、<br /><span className="text-primary">召し上がれ。</span></>
               )}
             </h1>
-            <p className="mt-3 md:mt-6 text-xs md:text-base text-on-surface-variant max-w-[10rem] md:max-w-xs leading-relaxed text-center hero-stagger-3">
+            <p className="mt-4 text-xs text-on-surface-variant leading-relaxed text-center hero-stagger-3">
               {settings?.hero_subtitle || '熱量と愛嬌で、エンタメを届けるレーベル。'}
             </p>
-            <div className="flex gap-3 mt-3 md:mt-4 hero-stagger-4">
+            <div className="flex gap-3 mt-4 hero-stagger-4">
+              <CTAButton href={settings?.hero_cta_primary_url || '/talent'} variant="primary" size="sm">
+                {settings?.hero_cta_primary_text || 'Talents'}
+              </CTAButton>
+              <CTAButton href={settings?.hero_cta_secondary_url || '/about'} variant="outline" size="sm">
+                {settings?.hero_cta_secondary_text || 'About'}
+              </CTAButton>
+            </div>
+          </div>
+        </div>
+
+        {/* ── PC: Side-by-side grid ── */}
+        <div className="hidden md:grid md:grid-cols-[1fr_1.5fr] items-center gap-8 px-12 lg:px-20 pt-28 pb-8">
+          <div className="z-10 flex flex-col items-center">
+            <h1 className="writing-vertical font-headline text-5xl lg:text-[3.5rem] tracking-[0.12em] leading-snug text-on-surface hero-stagger-1">
+              {settings?.hero_title ? (
+                settings.hero_title
+              ) : (
+                <>心を、<br /><span className="text-primary">召し上がれ。</span></>
+              )}
+            </h1>
+            <p className="mt-6 text-base text-on-surface-variant max-w-xs leading-relaxed text-center hero-stagger-3">
+              {settings?.hero_subtitle || '熱量と愛嬌で、エンタメを届けるレーベル。'}
+            </p>
+            <div className="flex gap-3 mt-4 hero-stagger-4">
               <CTAButton href={settings?.hero_cta_primary_url || '/talent'} variant="primary" size="sm">
                 {settings?.hero_cta_primary_text || 'Talents'}
               </CTAButton>
@@ -65,40 +107,23 @@ export default async function HomePage() {
             </div>
           </div>
 
-          {/* Right: Photo collage */}
-          <div className="relative flex justify-center items-center hero-image-enter flex-1 min-w-0">
-            <div className="relative w-full max-w-xl aspect-square md:rotate-1 hover:rotate-0 transition-transform duration-700">
-              <div className="absolute inset-0 grid grid-cols-4 grid-rows-3 gap-2 md:gap-4">
-                {/* Main video/photo */}
+          <div className="relative flex justify-center items-center hero-image-enter">
+            <div className="relative w-full max-w-xl aspect-square rotate-1 hover:rotate-0 transition-transform duration-700">
+              <div className="absolute inset-0 grid grid-cols-4 grid-rows-3 gap-4">
                 <div className="col-span-3 row-span-2 bg-surface-low overflow-hidden rounded-3xl shadow-ambient-lg">
-                  <video
-                    src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
-                    autoPlay muted loop playsInline
-                    className="w-full h-full object-cover"
-                  />
+                  <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
+                    autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 </div>
-
-                {/* Pop-art accent */}
                 <div className="col-span-1 row-span-1 bg-secondary overflow-hidden rounded-full rotate-6 flex items-center justify-center shadow-ambient">
-                  <span className="text-on-secondary font-headline text-2xl md:text-3xl">★</span>
+                  <span className="text-on-secondary font-headline text-3xl">★</span>
                 </div>
-
-                {/* Secondary video */}
                 <div className="col-span-1 row-span-2 bg-surface-low overflow-hidden rounded-2xl shadow-ambient translate-y-4">
-                  <video
-                    src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
-                    autoPlay muted loop playsInline
-                    className="w-full h-full object-cover"
-                  />
+                  <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
+                    autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 </div>
-
-                {/* Video plate */}
                 <div className="col-span-2 row-span-1 overflow-hidden rounded-full -translate-x-4 shadow-ambient">
-                  <video
-                    src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
-                    autoPlay muted loop playsInline
-                    className="w-full h-full object-cover"
-                  />
+                  <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
+                    autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
@@ -106,7 +131,7 @@ export default async function HomePage() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="flex flex-col items-center gap-1.5 py-6 hero-stagger-5">
+        <div className="flex flex-col items-center gap-1.5 py-4 md:py-6 hero-stagger-5">
           <span className="text-[10px] tracking-[0.3em] uppercase text-outline/40 font-semibold">Scroll</span>
           <div className="w-px h-8 bg-outline/15 rounded-full overflow-hidden">
             <div className="w-full h-1/2 bg-primary animate-scroll-line" />
