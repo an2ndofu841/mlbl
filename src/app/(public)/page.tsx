@@ -42,27 +42,27 @@ export default async function HomePage() {
           />
         )}
 
-        {/* ── SP: Center text with scattered videos ── */}
+        {/* ── SP: Center text with videos bursting out ── */}
         <div className="md:hidden relative min-h-[calc(100dvh-4rem)] flex flex-col items-center justify-center px-6 pt-20 pb-10">
-          {/* Scattered videos around text */}
-          <div className="absolute top-20 right-4 w-28 h-20 rounded-2xl overflow-hidden shadow-ambient hero-stagger-2 rotate-3">
-            <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
-              autoPlay muted loop playsInline className="w-full h-full object-cover" />
-          </div>
-          <div className="absolute top-36 left-3 w-20 h-20 rounded-full overflow-hidden shadow-ambient hero-stagger-3 -rotate-6">
-            <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
-              autoPlay muted loop playsInline className="w-full h-full object-cover" />
-          </div>
-          <div className="absolute bottom-28 right-6 w-24 h-32 rounded-2xl overflow-hidden shadow-ambient hero-stagger-4 rotate-6">
-            <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
-              autoPlay muted loop playsInline className="w-full h-full object-cover" />
-          </div>
-          <div className="absolute bottom-24 left-4 w-16 h-16 rounded-full bg-secondary flex items-center justify-center shadow-ambient hero-stagger-2">
-            <span className="text-on-secondary font-headline text-xl">★</span>
-          </div>
-
-          {/* Center text */}
+          {/* Center text + videos as one cluster */}
           <div className="relative z-10 flex flex-col items-center">
+            {/* Videos positioned relative to the text block */}
+            <div className="absolute -top-6 -right-16 w-28 h-20 rounded-2xl overflow-hidden shadow-ambient-lg hero-stagger-2 rotate-6 z-20">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute top-16 -left-14 w-20 h-20 rounded-full overflow-hidden shadow-ambient-lg hero-stagger-3 -rotate-6 z-20">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute -bottom-4 -right-12 w-24 h-28 rounded-2xl overflow-hidden shadow-ambient-lg hero-stagger-4 rotate-3 z-20">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute bottom-12 -left-10 w-14 h-14 rounded-full bg-secondary flex items-center justify-center shadow-ambient hero-stagger-2 z-20">
+              <span className="text-on-secondary font-headline text-lg">★</span>
+            </div>
+
             <h1 className="writing-vertical font-headline text-4xl tracking-[0.12em] leading-snug text-on-surface hero-stagger-1">
               {settings?.hero_title ? (
                 settings.hero_title
@@ -70,10 +70,10 @@ export default async function HomePage() {
                 <>心を、<br /><span className="text-primary">召し上がれ。</span></>
               )}
             </h1>
-            <p className="mt-4 text-xs text-on-surface-variant leading-relaxed text-center hero-stagger-3">
+            <p className="mt-4 text-xs text-on-surface-variant leading-relaxed text-center hero-stagger-3 relative z-30">
               {settings?.hero_subtitle || '熱量と愛嬌で、エンタメを届けるレーベル。'}
             </p>
-            <div className="flex gap-3 mt-4 hero-stagger-4">
+            <div className="flex gap-3 mt-4 hero-stagger-4 relative z-30">
               <CTAButton href={settings?.hero_cta_primary_url || '/talent'} variant="primary" size="sm">
                 {settings?.hero_cta_primary_text || 'Talents'}
               </CTAButton>
