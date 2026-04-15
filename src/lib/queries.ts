@@ -41,10 +41,9 @@ export async function getPublishedNews(limit?: number) {
     .from('news')
     .select('*')
     .eq('status', 'published')
-    .not('published_at', 'is', null)
-    .lte('published_at', now)
+    .or(`published_at.is.null,published_at.lte.${now}`)
     .order('pinned', { ascending: false })
-    .order('published_at', { ascending: false })
+    .order('published_at', { ascending: false, nullsFirst: false })
   if (limit) query = query.limit(limit)
   const { data } = await query
   return data ?? []

@@ -212,6 +212,42 @@ export default async function HomePage() {
         </section>
       )}
 
+      {/* ════════ Special Banner (only when specials exist) ════════ */}
+      {specials.length > 0 && (
+        <section className="px-4 md:px-16 py-28 md:py-36">
+          <AnimateIn>
+            <div className="relative w-full h-[450px] md:h-[550px] overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem] group shadow-ambient-lg">
+              {specials[0].thumbnail_url || specials[0].hero_image_url ? (
+                <img src={specials[0].hero_image_url || specials[0].thumbnail_url!} alt={specials[0].title}
+                  className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[2s]" />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-on-surface via-on-surface/90 to-primary-dim" />
+              )}
+              <div className="absolute inset-0 bg-primary/30 flex flex-col items-center justify-center text-center p-8 backdrop-blur-[2px] group-hover:backdrop-blur-0 transition-all duration-700">
+                <span className="text-white font-semibold text-sm tracking-[0.5em] mb-6 uppercase drop-shadow-lg">
+                  Special
+                </span>
+                <h2 className="text-white font-headline text-4xl md:text-7xl mb-10 drop-shadow-xl font-black leading-tight">
+                  {specials[0].title}
+                </h2>
+                <div className="relative">
+                  <div className="absolute -top-10 -right-10 bg-tertiary text-on-tertiary text-[10px] font-bold py-1.5 px-3 rounded-full rotate-12 animate-pulse z-20">
+                    NEW
+                  </div>
+                  <Link href={`/special/${specials[0].slug}`}
+                    className="group/btn relative px-12 py-5 bg-surface-lowest text-primary font-black tracking-widest overflow-hidden rounded-full shadow-ambient-lg hover:scale-105 active:scale-95 transition-all duration-300 inline-block">
+                    <span className="relative z-10 group-hover/btn:text-on-primary transition-colors uppercase text-sm">
+                      {specials[0].cta_text || 'くわしく見る'}
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary-dim translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500 rounded-full" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </AnimateIn>
+        </section>
+      )}
+
       {/* ════════ Talents — Pop-Art Frames ════════ */}
       {artists.length > 0 && (
         <section className="px-8 md:px-16 py-28 md:py-36 bg-surface-low rounded-[2rem] md:rounded-[3.5rem] mx-4 md:mx-8">
@@ -264,65 +300,6 @@ export default async function HomePage() {
               </div>
             </AnimateIn>
           )}
-        </section>
-      )}
-
-      {/* ════════ Special Banner ════════ */}
-      {specials.length > 0 ? (
-        <section className="px-4 md:px-16 py-28 md:py-36">
-          <AnimateIn>
-            <div className="relative w-full h-[450px] md:h-[550px] overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem] group shadow-ambient-lg">
-              {specials[0].thumbnail_url || specials[0].hero_image_url ? (
-                <img src={specials[0].hero_image_url || specials[0].thumbnail_url!} alt={specials[0].title}
-                  className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[2s]" />
-              ) : (
-                <div className="w-full h-full bg-gradient-to-br from-on-surface via-on-surface/90 to-primary-dim" />
-              )}
-              <div className="absolute inset-0 bg-primary/30 flex flex-col items-center justify-center text-center p-8 backdrop-blur-[2px] group-hover:backdrop-blur-0 transition-all duration-700">
-                <span className="text-white font-semibold text-sm tracking-[0.5em] mb-6 uppercase drop-shadow-lg">
-                  Special
-                </span>
-                <h2 className="text-white font-headline text-4xl md:text-7xl mb-10 drop-shadow-xl font-black leading-tight">
-                  {specials[0].title}
-                </h2>
-                <div className="relative">
-                  <div className="absolute -top-10 -right-10 bg-tertiary text-on-tertiary text-[10px] font-bold py-1.5 px-3 rounded-full rotate-12 animate-pulse z-20">
-                    NEW
-                  </div>
-                  <Link href={`/special/${specials[0].slug}`}
-                    className="group/btn relative px-12 py-5 bg-surface-lowest text-primary font-black tracking-widest overflow-hidden rounded-full shadow-ambient-lg hover:scale-105 active:scale-95 transition-all duration-300 inline-block">
-                    <span className="relative z-10 group-hover/btn:text-on-primary transition-colors uppercase text-sm">
-                      {specials[0].cta_text || 'くわしく見る'}
-                    </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary-dim translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500 rounded-full" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </AnimateIn>
-        </section>
-      ) : (
-        <section className="px-4 md:px-16 py-28 md:py-36">
-          <AnimateIn>
-            <div className="relative w-full h-[450px] md:h-[550px] overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem] group shadow-ambient-lg bg-on-surface">
-              <div className="absolute inset-0 bg-primary/15 flex flex-col items-center justify-center text-center p-8">
-                <span className="text-white/50 font-semibold text-sm tracking-[0.5em] mb-6 uppercase">Experimental Phase</span>
-                <h2 className="text-white font-headline text-4xl md:text-7xl mb-10 font-black">秘密の招待状</h2>
-                <div className="relative">
-                  <div className="absolute -top-10 -right-10 bg-tertiary text-on-tertiary text-[10px] font-bold py-1.5 px-3 rounded-full rotate-12 animate-pulse z-20">
-                    押さないで？
-                  </div>
-                  <Link href="/special"
-                    className="group/btn relative px-14 py-5 bg-surface-lowest text-primary font-black tracking-widest overflow-hidden rounded-full shadow-ambient-lg hover:scale-105 active:scale-95 transition-all duration-300 inline-block">
-                    <span className="relative z-10 group-hover/btn:text-on-primary transition-colors uppercase italic text-sm">
-                      開けてはいけないボタン
-                    </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary-dim translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500 rounded-full" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </AnimateIn>
         </section>
       )}
 
