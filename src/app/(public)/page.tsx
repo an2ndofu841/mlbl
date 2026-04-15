@@ -28,7 +28,7 @@ export default async function HomePage() {
   return (
     <>
       {/* ════════ Hero: The Kinetic Gallery ════════ */}
-      <section className="relative h-dvh overflow-hidden bg-surface-base">
+      <section className="relative bg-surface-base">
         {/* Ambient blobs */}
         <div className="absolute top-20 -right-32 w-[420px] h-[420px] bg-primary-container/30 blob-bg -z-10 animate-float blur-2xl" />
         <div className="absolute bottom-32 -left-24 w-80 h-80 bg-secondary-container/20 blob-bg -z-10 animate-float-delayed blur-xl" />
@@ -42,7 +42,7 @@ export default async function HomePage() {
           />
         )}
 
-        <div className="h-full grid grid-cols-1 md:grid-cols-[auto_1fr] items-center gap-6 md:gap-12 px-8 md:px-16 pt-28 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] items-center gap-4 md:gap-6 px-8 md:px-12 pt-28 pb-8">
           {/* Left: Typography */}
           <div className="z-10 flex flex-col items-center md:items-start">
             <h1 className="writing-vertical font-headline text-4xl md:text-5xl lg:text-[3.5rem] tracking-[0.12em] leading-snug text-on-surface hero-stagger-1">
@@ -69,7 +69,7 @@ export default async function HomePage() {
 
           {/* Right: Photo collage */}
           <div className="relative flex justify-center items-center hero-image-enter">
-            <div className="relative w-full max-w-md lg:max-w-lg aspect-square md:rotate-1 hover:rotate-0 transition-transform duration-700">
+            <div className="relative w-full max-w-xl aspect-square md:rotate-1 hover:rotate-0 transition-transform duration-700">
               <div className="absolute inset-0 grid grid-cols-4 grid-rows-3 gap-2 md:gap-4">
                 {/* Main video/photo */}
                 <div className="col-span-3 row-span-2 bg-surface-low overflow-hidden rounded-3xl shadow-ambient-lg">
@@ -108,7 +108,7 @@ export default async function HomePage() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-4 left-8 md:left-16 flex flex-col items-center gap-1.5 hero-stagger-5">
+        <div className="flex flex-col items-center gap-1.5 py-6 hero-stagger-5">
           <span className="text-[10px] tracking-[0.3em] uppercase text-outline/40 font-semibold">Scroll</span>
           <div className="w-px h-8 bg-outline/15 rounded-full overflow-hidden">
             <div className="w-full h-1/2 bg-primary animate-scroll-line" />
