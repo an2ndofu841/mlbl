@@ -28,7 +28,7 @@ export default async function HomePage() {
   return (
     <>
       {/* ════════ Hero: The Kinetic Gallery ════════ */}
-      <section className="relative min-h-[85vh] flex flex-col md:flex-row items-center justify-between px-8 md:px-16 py-20 pt-28 overflow-hidden bg-surface-base">
+      <section className="relative h-[calc(100vh-5rem)] flex flex-col md:flex-row items-center justify-between px-8 md:px-16 py-12 pt-24 overflow-hidden bg-surface-base">
         {/* Ambient blobs */}
         <div className="absolute top-20 -right-32 w-[420px] h-[420px] bg-primary-container/30 blob-bg -z-10 animate-float blur-2xl" />
         <div className="absolute bottom-32 -left-24 w-80 h-80 bg-secondary-container/20 blob-bg -z-10 animate-float-delayed blur-xl" />
@@ -44,19 +44,19 @@ export default async function HomePage() {
 
         {/* Left: Typography */}
         <div className="z-10 order-2 md:order-1 mt-12 md:mt-0 flex flex-col items-center md:items-start">
-          <h1 className="writing-vertical font-headline text-5xl md:text-[6.5rem] tracking-[0.15em] leading-relaxed text-on-surface hero-stagger-1">
+          <h1 className="writing-vertical font-headline text-4xl md:text-5xl lg:text-6xl tracking-[0.12em] leading-relaxed text-on-surface hero-stagger-1">
             {settings?.hero_title ? (
               settings.hero_title
             ) : (
               <>心を、<br /><span className="text-primary">召し上がれ。</span></>
             )}
           </h1>
-          <p className="mt-8 md:mt-12 text-sm md:text-base text-on-surface-variant max-w-xs leading-relaxed text-center md:text-left hero-stagger-3"
+          <p className="mt-6 md:mt-8 text-sm md:text-base text-on-surface-variant max-w-xs leading-relaxed text-center md:text-left hero-stagger-3"
             style={{ writingMode: 'horizontal-tb' }}
           >
             {settings?.hero_subtitle || '熱量と愛嬌で、エンタメを届けるレーベル。'}
           </p>
-          <div className="flex gap-3 mt-8 hero-stagger-4" style={{ writingMode: 'horizontal-tb' }}>
+          <div className="flex gap-3 mt-6 hero-stagger-4" style={{ writingMode: 'horizontal-tb' }}>
             <CTAButton href={settings?.hero_cta_primary_url || '/talent'} variant="primary" size="md">
               {settings?.hero_cta_primary_text || 'Talents'}
             </CTAButton>
@@ -67,9 +67,9 @@ export default async function HomePage() {
         </div>
 
         {/* Right: Photo collage */}
-        <div className="relative w-full md:w-3/5 order-1 md:order-2 flex justify-center items-center mb-8 md:mb-0 hero-image-enter">
-          <div className="relative w-full max-w-2xl aspect-square md:rotate-1 hover:rotate-0 transition-transform duration-700">
-            <div className="absolute inset-0 grid grid-cols-4 grid-rows-3 gap-3 md:gap-5">
+        <div className="relative w-full md:w-[55%] order-1 md:order-2 flex justify-center items-center mb-4 md:mb-0 hero-image-enter">
+          <div className="relative w-full max-w-lg aspect-square md:rotate-1 hover:rotate-0 transition-transform duration-700">
+            <div className="absolute inset-0 grid grid-cols-4 grid-rows-3 gap-2 md:gap-4">
               {/* Main photo */}
               <div className="col-span-3 row-span-2 bg-surface-low overflow-hidden rounded-3xl shadow-ambient-lg">
                 {artists[0]?.profile_image_url ? (
@@ -108,9 +108,9 @@ export default async function HomePage() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hero-stagger-5">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 hero-stagger-5">
           <span className="text-[10px] tracking-[0.3em] uppercase text-outline/40 font-semibold">Scroll</span>
-          <div className="w-px h-12 bg-outline/15 rounded-full overflow-hidden">
+          <div className="w-px h-8 bg-outline/15 rounded-full overflow-hidden">
             <div className="w-full h-1/2 bg-primary animate-scroll-line" />
           </div>
         </div>
