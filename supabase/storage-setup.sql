@@ -18,7 +18,7 @@ values (
   'cms-uploads',
   'cms-uploads',
   true,
-  10485760,  -- 10MB
+  52428800,  -- 50MB
   '{image/jpeg,image/png,image/webp,image/gif,image/svg+xml}'
 )
 on conflict (id) do update set

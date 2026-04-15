@@ -5,14 +5,15 @@ import {
   Upload, Trash2, Copy, Check, FolderOpen, RefreshCw, Image as ImageIcon, X,
 } from 'lucide-react'
 import {
-  uploadCmsImage,
   listCmsImages,
   deleteCmsImage,
   type MediaFile,
   type MediaFolder,
 } from '@/app/admin/actions/upload-image'
+import { createClient } from '@/lib/supabase/client'
 
 const MEDIA_FOLDERS: MediaFolder[] = ['site', 'artists', 'news', 'contents', 'works', 'specials', 'misc']
+const MAX_SIZE = 50 * 1024 * 1024
 
 const FOLDER_LABELS: Record<string, string> = {
   artists: 'アーティスト',
@@ -65,13 +66,19 @@ export function MediaLibrary() {
 
     startTransition(async () => {
       setError('')
+      const supabase = createClient()
       for (const file of uploads) {
-        const fd = new FormData()
-        fd.append('file', file)
-        fd.append('folder', folder)
-        const res = await uploadCmsImage(fd)
-        if ('error' in res) {
-          setError(res.error)
+        if (file.size > MAX_SIZE) {
+          setError('50MB 以下のファイルにしてください。')
+          return
+        }
+        const ext = file.name.split('.').pop()?.replace(/[^a-zA-Z0-9]/g, '') || 'bin'
+        const path = `${folder}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`
+        const { error: uploadError } = await supabase.storage
+          .from('cms-uploads')
+          .upload(path, file, { contentType: file.type, upsert: false })
+        if (uploadError) {
+          setError(uploadError.message)
           return
         }
       }
@@ -134,7 +141,7 @@ export function MediaLibrary() {
         <input
           ref={inputRef}
           type="file"
-          accept="image/jpeg,image/png,image/webp,image/gif,image/svg+xml"
+          accept="image/jpeg,image/png,image/webp,image/gif,image/svg+xml,video/mp4,video/webm"
           multiple
           className="hidden"
           onChange={(e) => handleUpload(e.target.files)}
@@ -149,7 +156,7 @@ export function MediaLibrary() {
             <Upload className="w-8 h-8 text-gray-300" />
             <div>
               <p className="text-sm font-medium text-gray-600">クリック or ドラッグ&ドロップ</p>
-              <p className="text-xs text-gray-400 mt-1">JPEG / PNG / WebP / GIF / SVG（10MB以下・複数可）</p>
+              <p className="text-xs text-gray-400 mt-1">JPEG / PNG / WebP / GIF / SVG / MP4 / WebM（50MB以下・複数可）</p>
             </div>
           </div>
         )}

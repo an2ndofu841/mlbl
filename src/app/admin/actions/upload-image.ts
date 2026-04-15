@@ -5,7 +5,7 @@ import { createServiceRoleClient } from '@/lib/supabase/server'
 export type UploadImageResult = { url: string } | { error: string }
 
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/svg+xml']
-const MAX_SIZE = 10 * 1024 * 1024 // 10MB
+const MAX_SIZE = 50 * 1024 * 1024 // 50MB
 
 export type MediaFolder = 'artists' | 'news' | 'contents' | 'works' | 'specials' | 'site' | 'misc'
 
@@ -18,7 +18,7 @@ export async function uploadCmsImage(formData: FormData): Promise<UploadImageRes
     return { error: 'SUPABASE_SERVICE_ROLE_KEY が未設定のためアップロードできません。' }
   }
   if (file.size > MAX_SIZE) {
-    return { error: '10MB 以下のファイルにしてください。' }
+    return { error: '50MB 以下のファイルにしてください。' }
   }
   if (!ALLOWED_TYPES.includes(file.type)) {
     return { error: '対応形式: JPEG, PNG, WebP, GIF, SVG' }
