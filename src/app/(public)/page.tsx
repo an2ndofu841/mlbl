@@ -28,7 +28,7 @@ export default async function HomePage() {
   return (
     <>
       {/* ════════ Hero: The Kinetic Gallery ════════ */}
-      <section className="relative h-[calc(100vh-5rem)] flex flex-col md:flex-row items-center justify-between px-8 md:px-16 py-12 pt-24 overflow-hidden bg-surface-base">
+      <section className="relative h-dvh overflow-hidden bg-surface-base">
         {/* Ambient blobs */}
         <div className="absolute top-20 -right-32 w-[420px] h-[420px] bg-primary-container/30 blob-bg -z-10 animate-float blur-2xl" />
         <div className="absolute bottom-32 -left-24 w-80 h-80 bg-secondary-container/20 blob-bg -z-10 animate-float-delayed blur-xl" />
@@ -42,66 +42,68 @@ export default async function HomePage() {
           />
         )}
 
-        {/* Left: Typography */}
-        <div className="z-10 order-2 md:order-1 mt-12 md:mt-0 flex flex-col items-center md:items-start">
-          <h1 className="writing-vertical font-headline text-4xl md:text-5xl lg:text-6xl tracking-[0.12em] leading-relaxed text-on-surface hero-stagger-1">
-            {settings?.hero_title ? (
-              settings.hero_title
-            ) : (
-              <>心を、<br /><span className="text-primary">召し上がれ。</span></>
-            )}
-          </h1>
-          <p className="mt-6 md:mt-8 text-sm md:text-base text-on-surface-variant max-w-xs leading-relaxed text-center md:text-left hero-stagger-3"
-            style={{ writingMode: 'horizontal-tb' }}
-          >
-            {settings?.hero_subtitle || '熱量と愛嬌で、エンタメを届けるレーベル。'}
-          </p>
-          <div className="flex gap-3 mt-6 hero-stagger-4" style={{ writingMode: 'horizontal-tb' }}>
-            <CTAButton href={settings?.hero_cta_primary_url || '/talent'} variant="primary" size="md">
-              {settings?.hero_cta_primary_text || 'Talents'}
-            </CTAButton>
-            <CTAButton href={settings?.hero_cta_secondary_url || '/about'} variant="outline" size="md">
-              {settings?.hero_cta_secondary_text || 'About'}
-            </CTAButton>
+        <div className="h-full grid grid-cols-1 md:grid-cols-[auto_1fr] items-center gap-6 md:gap-12 px-8 md:px-16 pt-28 pb-16">
+          {/* Left: Typography */}
+          <div className="z-10 flex flex-col items-center md:items-start">
+            <h1 className="writing-vertical font-headline text-4xl md:text-5xl lg:text-[3.5rem] tracking-[0.12em] leading-snug text-on-surface hero-stagger-1">
+              {settings?.hero_title ? (
+                settings.hero_title
+              ) : (
+                <>心を、<br /><span className="text-primary">召し上がれ。</span></>
+              )}
+            </h1>
+            <p className="mt-4 md:mt-6 text-sm md:text-base text-on-surface-variant max-w-xs leading-relaxed text-center md:text-left hero-stagger-3"
+              style={{ writingMode: 'horizontal-tb' }}
+            >
+              {settings?.hero_subtitle || '熱量と愛嬌で、エンタメを届けるレーベル。'}
+            </p>
+            <div className="flex gap-3 mt-4 hero-stagger-4" style={{ writingMode: 'horizontal-tb' }}>
+              <CTAButton href={settings?.hero_cta_primary_url || '/talent'} variant="primary" size="sm">
+                {settings?.hero_cta_primary_text || 'Talents'}
+              </CTAButton>
+              <CTAButton href={settings?.hero_cta_secondary_url || '/about'} variant="outline" size="sm">
+                {settings?.hero_cta_secondary_text || 'About'}
+              </CTAButton>
+            </div>
           </div>
-        </div>
 
-        {/* Right: Photo collage */}
-        <div className="relative w-full md:w-[55%] order-1 md:order-2 flex justify-center items-center mb-4 md:mb-0 hero-image-enter">
-          <div className="relative w-full max-w-lg aspect-square md:rotate-1 hover:rotate-0 transition-transform duration-700">
-            <div className="absolute inset-0 grid grid-cols-4 grid-rows-3 gap-2 md:gap-4">
-              {/* Main photo */}
-              <div className="col-span-3 row-span-2 bg-surface-low overflow-hidden rounded-3xl shadow-ambient-lg">
-                {artists[0]?.profile_image_url ? (
-                  <img src={artists[0].profile_image_url} alt={artists[0].name}
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
-                ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-surface-low to-surface-mid flex items-center justify-center">
-                    <span className="font-headline text-6xl text-outline/10">め</span>
-                  </div>
-                )}
-              </div>
+          {/* Right: Photo collage */}
+          <div className="relative flex justify-center items-center hero-image-enter">
+            <div className="relative w-full max-w-md lg:max-w-lg aspect-square md:rotate-1 hover:rotate-0 transition-transform duration-700">
+              <div className="absolute inset-0 grid grid-cols-4 grid-rows-3 gap-2 md:gap-4">
+                {/* Main photo */}
+                <div className="col-span-3 row-span-2 bg-surface-low overflow-hidden rounded-3xl shadow-ambient-lg">
+                  {artists[0]?.profile_image_url ? (
+                    <img src={artists[0].profile_image_url} alt={artists[0].name}
+                      className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-surface-low to-surface-mid flex items-center justify-center">
+                      <span className="font-headline text-6xl text-outline/10">め</span>
+                    </div>
+                  )}
+                </div>
 
-              {/* Pop-art accent */}
-              <div className="col-span-1 row-span-1 bg-secondary overflow-hidden rounded-full rotate-6 flex items-center justify-center shadow-ambient">
-                <span className="text-on-secondary font-headline text-3xl">★</span>
-              </div>
+                {/* Pop-art accent */}
+                <div className="col-span-1 row-span-1 bg-secondary overflow-hidden rounded-full rotate-6 flex items-center justify-center shadow-ambient">
+                  <span className="text-on-secondary font-headline text-2xl md:text-3xl">★</span>
+                </div>
 
-              {/* Secondary photo */}
-              <div className="col-span-1 row-span-2 bg-surface-low overflow-hidden rounded-2xl shadow-ambient translate-y-6">
-                {artists[1]?.profile_image_url ? (
-                  <img src={artists[1].profile_image_url} alt={artists[1].name}
-                    className="w-full h-full object-cover" />
-                ) : (
-                  <div className="w-full h-full bg-gradient-to-b from-primary-container/40 to-surface-base" />
-                )}
-              </div>
+                {/* Secondary photo */}
+                <div className="col-span-1 row-span-2 bg-surface-low overflow-hidden rounded-2xl shadow-ambient translate-y-4">
+                  {artists[1]?.profile_image_url ? (
+                    <img src={artists[1].profile_image_url} alt={artists[1].name}
+                      className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-b from-primary-container/40 to-surface-base" />
+                  )}
+                </div>
 
-              {/* Label plate */}
-              <div className="col-span-2 row-span-1 bg-gradient-to-r from-primary to-primary-dim overflow-hidden rounded-full -translate-x-6 flex items-center justify-center p-4 shadow-ambient">
-                <span className="text-on-primary font-headline text-lg md:text-2xl tracking-[0.4em] font-black uppercase">
-                  Label
-                </span>
+                {/* Label plate */}
+                <div className="col-span-2 row-span-1 bg-gradient-to-r from-primary to-primary-dim overflow-hidden rounded-full -translate-x-4 flex items-center justify-center p-3 shadow-ambient">
+                  <span className="text-on-primary font-headline text-base md:text-xl tracking-[0.4em] font-black uppercase">
+                    Label
+                  </span>
+                </div>
               </div>
             </div>
           </div>
