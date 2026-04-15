@@ -9,6 +9,7 @@ import {
   getWorks,
 } from '@/lib/queries'
 import { CTAButton } from '@/components/ui/cta-button'
+import { AnimateIn } from '@/components/ui/animate-in'
 import { NEWS_CATEGORY_LABELS, WORK_TYPE_LABELS, formatDateShort } from '@/lib/utils'
 
 export const revalidate = 60
@@ -39,7 +40,7 @@ export default async function HomePage() {
 
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           {/* Top label */}
-          <div className="flex items-center gap-3 mb-6 md:mb-8">
+          <div className="flex items-center gap-3 mb-6 md:mb-8 hero-stagger-1">
             <span className="inline-block w-8 h-px bg-secondary" />
             <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-secondary">
               Creative Label
@@ -52,22 +53,22 @@ export default async function HomePage() {
             <div className="md:col-span-7">
               <h1 className="font-headline leading-[0.95] tracking-tight">
                 {settings?.hero_title ? (
-                  <span className="text-5xl md:text-7xl lg:text-8xl text-on-surface block">{settings.hero_title}</span>
+                  <span className="text-5xl md:text-7xl lg:text-8xl text-on-surface block hero-stagger-2">{settings.hero_title}</span>
                 ) : (
                   <>
-                    <span className="text-5xl md:text-7xl lg:text-8xl text-on-surface block">心を、</span>
-                    <span className="text-5xl md:text-7xl lg:text-8xl text-primary block mt-1">
+                    <span className="text-5xl md:text-7xl lg:text-8xl text-on-surface block hero-stagger-2">心を、</span>
+                    <span className="text-5xl md:text-7xl lg:text-8xl text-primary block mt-1 hero-stagger-3">
                       召し上がれ。
                     </span>
                   </>
                 )}
               </h1>
 
-              <p className="mt-6 text-sm md:text-base text-on-surface-variant max-w-md leading-relaxed">
+              <p className="mt-6 text-sm md:text-base text-on-surface-variant max-w-md leading-relaxed hero-stagger-4">
                 {settings?.hero_subtitle || '熱量と愛嬌で、エンタメを届けるレーベル。'}
               </p>
 
-              <div className="flex items-center gap-4 mt-6">
+              <div className="flex items-center gap-4 mt-6 hero-stagger-5">
                 <CTAButton href={settings?.hero_cta_primary_url || '/talent'} variant="primary" size="sm">
                   {settings?.hero_cta_primary_text || 'Talents'}
                 </CTAButton>
@@ -78,7 +79,7 @@ export default async function HomePage() {
             </div>
 
             {/* Hero image — spans 5 cols */}
-            <div className="md:col-span-5 relative">
+            <div className="md:col-span-5 relative hero-image-enter">
               <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-ambient-lg bg-surface-low group">
                 {artists[0]?.profile_image_url ? (
                   <img src={artists[0].profile_image_url} alt={artists[0].name}
@@ -88,11 +89,9 @@ export default async function HomePage() {
                     <span className="font-headline text-7xl text-outline/8">め</span>
                   </div>
                 )}
-                {/* Pop-art accent bar */}
                 <div className="absolute left-0 top-8 bottom-8 w-1 bg-secondary rounded-r-full" />
               </div>
 
-              {/* Floating artist name chip */}
               {artists[0]?.name && (
                 <div className="absolute -bottom-3 -left-3 md:-left-6 glass rounded-2xl px-4 py-2.5 shadow-ambient">
                   <span className="text-[10px] font-bold tracking-wider text-secondary uppercase block">Featured</span>
@@ -100,7 +99,6 @@ export default async function HomePage() {
                 </div>
               )}
 
-              {/* Small secondary image */}
               {artists[1]?.profile_image_url && (
                 <div className="absolute -top-4 -right-4 md:-right-6 w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-ambient rotate-6 hover:rotate-0 transition-transform duration-500">
                   <img src={artists[1].profile_image_url} alt={artists[1].name}
@@ -110,17 +108,18 @@ export default async function HomePage() {
             </div>
           </div>
 
-          {/* Bottom ticker-style text */}
-          <div className="mt-8 md:mt-10 flex items-center gap-6 overflow-hidden opacity-[0.12]">
-            <span className="font-headline text-6xl md:text-8xl font-black tracking-tighter whitespace-nowrap text-on-surface">
-              MESHIAGA LABEL
-            </span>
-            <span className="font-headline text-6xl md:text-8xl font-black tracking-tighter whitespace-nowrap text-primary">
-              ★
-            </span>
-            <span className="font-headline text-6xl md:text-8xl font-black tracking-tighter whitespace-nowrap text-on-surface">
-              めしあがレーベル
-            </span>
+          {/* Bottom ticker — infinite scroll */}
+          <div className="mt-8 md:mt-10 overflow-hidden opacity-[0.08]">
+            <div className="flex items-center gap-12 animate-ticker w-max">
+              {[0, 1].map((dup) => (
+                <div key={dup} className="flex items-center gap-12 shrink-0">
+                  <span className="font-headline text-6xl md:text-8xl font-black tracking-tighter whitespace-nowrap text-on-surface">MESHIAGA LABEL</span>
+                  <span className="font-headline text-6xl md:text-8xl font-black tracking-tighter whitespace-nowrap text-primary">★</span>
+                  <span className="font-headline text-6xl md:text-8xl font-black tracking-tighter whitespace-nowrap text-on-surface">めしあがレーベル</span>
+                  <span className="font-headline text-6xl md:text-8xl font-black tracking-tighter whitespace-nowrap text-secondary">✦</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -128,23 +127,31 @@ export default async function HomePage() {
       {/* ════════ About Concept ════════ */}
       <section className="px-8 md:px-16 py-28 md:py-36 bg-surface-low relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <span className="inline-block px-5 py-2 rounded-full bg-secondary-container text-secondary font-bold text-[11px] tracking-[0.2em] uppercase mb-8">
-            Concept
-          </span>
-          <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl leading-tight mb-12 text-on-surface">
-            {settings?.about_intro_title || (
-              <>思想を<span className="text-primary italic">「味わう」</span>、<br />新しい体験を。</>
-            )}
-          </h2>
-          <p className="text-base md:text-lg leading-[2] text-on-surface-variant max-w-2xl mx-auto">
-            {settings?.about_intro_text ||
-              '私たちは、作品を"差し出す"という行為に、最大限の敬意と遊び心を込めています。「めしあがれ」——この言葉に込めた想いが、すべての活動の起点です。'}
-          </p>
-          <div className="mt-12">
-            <CTAButton href="/about" variant="outline" size="md">
-              もっと知る <ArrowRight className="ml-2 w-4 h-4 inline" />
-            </CTAButton>
-          </div>
+          <AnimateIn>
+            <span className="inline-block px-5 py-2 rounded-full bg-secondary-container text-secondary font-bold text-[11px] tracking-[0.2em] uppercase mb-8">
+              Concept
+            </span>
+          </AnimateIn>
+          <AnimateIn delay={150}>
+            <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl leading-tight mb-12 text-on-surface">
+              {settings?.about_intro_title || (
+                <>思想を<span className="text-primary italic">「味わう」</span>、<br />新しい体験を。</>
+              )}
+            </h2>
+          </AnimateIn>
+          <AnimateIn delay={300}>
+            <p className="text-base md:text-lg leading-[2] text-on-surface-variant max-w-2xl mx-auto">
+              {settings?.about_intro_text ||
+                '私たちは、作品を"差し出す"という行為に、最大限の敬意と遊び心を込めています。「めしあがれ」——この言葉に込めた想いが、すべての活動の起点です。'}
+            </p>
+          </AnimateIn>
+          <AnimateIn delay={400}>
+            <div className="mt-12">
+              <CTAButton href="/about" variant="outline" size="md">
+                もっと知る <ArrowRight className="ml-2 w-4 h-4 inline" />
+              </CTAButton>
+            </div>
+          </AnimateIn>
         </div>
         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-container/20 rounded-full blur-3xl -z-10" />
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-tertiary-container/15 rounded-full blur-3xl -z-10" />
@@ -153,16 +160,19 @@ export default async function HomePage() {
       {/* ════════ Pick Up Contents — The Idea Tray ════════ */}
       {contents.length > 0 && (
         <section className="px-8 md:px-16 py-28 md:py-36 bg-surface-base">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 gap-4">
-            <div>
-              <span className="text-[11px] tracking-[0.4em] uppercase text-secondary font-bold mb-3 block">Curation</span>
-              <h2 className="font-headline text-4xl md:text-5xl font-black text-on-surface">Specials</h2>
+          <AnimateIn>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 gap-4">
+              <div>
+                <span className="text-[11px] tracking-[0.4em] uppercase text-secondary font-bold mb-3 block">Curation</span>
+                <h2 className="font-headline text-4xl md:text-5xl font-black text-on-surface">Specials</h2>
+              </div>
+              <Link href="/contents" className="font-semibold text-sm text-primary hover:text-primary-dim flex items-center gap-2 transition-colors group">
+                VIEW ALL <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </div>
-            <Link href="/contents" className="font-semibold text-sm text-primary hover:text-primary-dim flex items-center gap-2 transition-colors group">
-              VIEW ALL <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
+          </AnimateIn>
 
+          <AnimateIn delay={200}>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
             {/* Featured large card */}
             <div className="md:col-span-7 group relative overflow-hidden rounded-3xl bg-surface-low h-[400px] md:h-[560px] shadow-ambient-lg hover:shadow-ambient transition-all">
@@ -206,6 +216,7 @@ export default async function HomePage() {
               ))}
             </div>
           </div>
+          </AnimateIn>
         </section>
       )}
 
@@ -224,19 +235,22 @@ export default async function HomePage() {
 
         return (
           <section className="py-20 md:py-28 bg-surface-base overflow-hidden">
-            <div className="mx-auto max-w-7xl px-6 md:px-12 mb-12 md:mb-16">
-              <div className="flex items-end justify-between gap-4">
-                <div>
-                  <span className="text-[11px] font-bold tracking-[0.4em] uppercase text-secondary mb-3 block">Our Talents</span>
-                  <h2 className="font-headline text-4xl md:text-6xl font-black text-on-surface">Creative Minds</h2>
+            <AnimateIn>
+              <div className="mx-auto max-w-7xl px-6 md:px-12 mb-12 md:mb-16">
+                <div className="flex items-end justify-between gap-4">
+                  <div>
+                    <span className="text-[11px] font-bold tracking-[0.4em] uppercase text-secondary mb-3 block">Our Talents</span>
+                    <h2 className="font-headline text-4xl md:text-6xl font-black text-on-surface">Creative Minds</h2>
+                  </div>
+                  <Link href="/talent" className="hidden md:flex font-semibold text-sm text-primary hover:text-primary-dim items-center gap-2 transition-colors group shrink-0">
+                    VIEW ALL <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </div>
-                <Link href="/talent" className="hidden md:flex font-semibold text-sm text-primary hover:text-primary-dim items-center gap-2 transition-colors group shrink-0">
-                  VIEW ALL <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
               </div>
-            </div>
+            </AnimateIn>
 
             {/* Horizontal scroll showcase */}
+            <AnimateIn delay={200}>
             <div className="flex gap-6 md:gap-10 overflow-x-auto px-6 md:px-12 pb-8 snap-x snap-mandatory scrollbar-hide"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}>
               {artists.slice(0, 6).map((artist, i) => (
@@ -295,6 +309,7 @@ export default async function HomePage() {
                 </div>
               </Link>
             </div>
+            </AnimateIn>
 
             {/* Mobile CTA */}
             <div className="md:hidden text-center mt-6 px-6">
@@ -309,6 +324,7 @@ export default async function HomePage() {
       {/* ════════ Special Banner ════════ */}
       {specials.length > 0 ? (
         <section className="px-4 md:px-16 py-28 md:py-36">
+          <AnimateIn>
           <div className="relative w-full h-[450px] md:h-[550px] overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem] group shadow-ambient-lg">
             {specials[0].thumbnail_url || specials[0].hero_image_url ? (
               <img src={specials[0].hero_image_url || specials[0].thumbnail_url!} alt={specials[0].title}
@@ -337,9 +353,11 @@ export default async function HomePage() {
               </div>
             </div>
           </div>
+          </AnimateIn>
         </section>
       ) : (
         <section className="px-4 md:px-16 py-28 md:py-36">
+          <AnimateIn>
           <div className="relative w-full h-[450px] md:h-[550px] overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem] group shadow-ambient-lg bg-on-surface">
             <div className="absolute inset-0 bg-primary/15 flex flex-col items-center justify-center text-center p-8">
               <span className="text-white/50 font-semibold text-sm tracking-[0.5em] mb-6 uppercase">Experimental Phase</span>
@@ -358,12 +376,14 @@ export default async function HomePage() {
               </div>
             </div>
           </div>
+          </AnimateIn>
         </section>
       )}
 
       {/* ════════ Works + News — Asymmetric Split ════════ */}
       <section className="px-8 md:px-16 py-28 md:py-36 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 bg-surface-base">
         {/* Works: Numbered list */}
+        <AnimateIn>
         <div>
           <div className="flex justify-between items-center mb-10">
             <h2 className="font-headline text-3xl md:text-4xl font-black text-on-surface">Portfolio</h2>
@@ -390,8 +410,10 @@ export default async function HomePage() {
             ))}
           </div>
         </div>
+        </AnimateIn>
 
         {/* News: Cards with accent bar */}
+        <AnimateIn delay={200}>
         <div>
           <div className="flex justify-between items-center mb-10">
             <h2 className="font-headline text-3xl md:text-4xl font-black text-on-surface">Journal</h2>
@@ -426,44 +448,49 @@ export default async function HomePage() {
             )}
           </div>
         </div>
+        </AnimateIn>
       </section>
 
       {/* ════════ Audition CTA ════════ */}
       <section className="py-28 md:py-36 bg-gradient-to-br from-primary to-primary-dim text-on-primary relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-xl" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/3 rounded-full translate-y-1/2 -translate-x-1/3 blur-lg" />
-        <div className="relative mx-auto max-w-3xl px-8 text-center">
-          <span className="text-[11px] tracking-[0.3em] font-bold mb-4 text-on-primary/50 uppercase block">Audition</span>
-          <h2 className="font-headline text-3xl md:text-5xl font-black">
-            {settings?.audition_banner_title || '仲間、募集中。'}
-          </h2>
-          <p className="mt-8 text-base md:text-lg text-on-primary/70 leading-relaxed max-w-xl mx-auto">
-            {settings?.audition_banner_text ||
-              'あなたの熱量を、ここで。めしあがレーベルでは、共に作品を届ける仲間を募集しています。'}
-          </p>
-          <div className="mt-10">
-            <Link href="/audition"
-              className="inline-flex items-center justify-center px-10 py-4 text-sm font-bold bg-surface-lowest text-primary rounded-full hover:scale-105 active:scale-95 transition-all shadow-ambient-lg">
-              詳しく見る
-            </Link>
+        <AnimateIn>
+          <div className="relative mx-auto max-w-3xl px-8 text-center">
+            <span className="text-[11px] tracking-[0.3em] font-bold mb-4 text-on-primary/50 uppercase block">Audition</span>
+            <h2 className="font-headline text-3xl md:text-5xl font-black">
+              {settings?.audition_banner_title || '仲間、募集中。'}
+            </h2>
+            <p className="mt-8 text-base md:text-lg text-on-primary/70 leading-relaxed max-w-xl mx-auto">
+              {settings?.audition_banner_text ||
+                'あなたの熱量を、ここで。めしあがレーベルでは、共に作品を届ける仲間を募集しています。'}
+            </p>
+            <div className="mt-10">
+              <Link href="/audition"
+                className="inline-flex items-center justify-center px-10 py-4 text-sm font-bold bg-surface-lowest text-primary rounded-full hover:scale-105 active:scale-95 transition-all shadow-ambient-lg">
+                詳しく見る
+              </Link>
+            </div>
           </div>
-        </div>
+        </AnimateIn>
       </section>
 
       {/* ════════ Contact CTA ════════ */}
       <section className="py-28 md:py-36 bg-surface-low">
-        <div className="mx-auto max-w-3xl px-8 text-center">
-          <span className="text-[11px] tracking-[0.3em] uppercase text-secondary font-bold mb-4 block">Contact</span>
-          <h2 className="font-headline text-3xl md:text-4xl font-black text-on-surface mb-4">お問い合わせ</h2>
-          <p className="mt-6 text-on-surface-variant leading-relaxed">
-            出演依頼・取材・コラボレーションなど、お気軽にご連絡ください。
-          </p>
-          <div className="mt-10">
-            <CTAButton href="/contact" variant="secondary" size="lg">
-              お問い合わせはこちら
-            </CTAButton>
+        <AnimateIn>
+          <div className="mx-auto max-w-3xl px-8 text-center">
+            <span className="text-[11px] tracking-[0.3em] uppercase text-secondary font-bold mb-4 block">Contact</span>
+            <h2 className="font-headline text-3xl md:text-4xl font-black text-on-surface mb-4">お問い合わせ</h2>
+            <p className="mt-6 text-on-surface-variant leading-relaxed">
+              出演依頼・取材・コラボレーションなど、お気軽にご連絡ください。
+            </p>
+            <div className="mt-10">
+              <CTAButton href="/contact" variant="secondary" size="lg">
+                お問い合わせはこちら
+              </CTAButton>
+            </div>
           </div>
-        </div>
+        </AnimateIn>
       </section>
     </>
   )
