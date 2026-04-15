@@ -42,9 +42,9 @@ export default async function HomePage() {
           />
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] items-center gap-4 md:gap-6 px-8 md:px-12 pt-28 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] items-center gap-4 md:gap-8 px-8 md:px-12 lg:px-20 pt-28 pb-8">
           {/* Left: Typography */}
-          <div className="z-10 flex flex-col items-center md:items-start">
+          <div className="z-10 flex flex-col items-center md:items-center">
             <h1 className="writing-vertical font-headline text-4xl md:text-5xl lg:text-[3.5rem] tracking-[0.12em] leading-snug text-on-surface hero-stagger-1">
               {settings?.hero_title ? (
                 settings.hero_title
