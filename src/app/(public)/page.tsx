@@ -87,12 +87,11 @@ export default async function HomePage() {
 
                 {/* Secondary photo */}
                 <div className="col-span-1 row-span-2 bg-surface-low overflow-hidden rounded-2xl shadow-ambient translate-y-4">
-                  {artists[1]?.profile_image_url ? (
-                    <img src={artists[1].profile_image_url} alt={artists[1].name}
-                      className="w-full h-full object-cover" />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-b from-primary-container/40 to-surface-base" />
-                  )}
+                  <video
+                    src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
+                    autoPlay muted loop playsInline
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 {/* Video plate */}
