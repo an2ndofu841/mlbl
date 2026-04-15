@@ -27,7 +27,7 @@ export default async function HomePage() {
   return (
     <>
       {/* ════════ Hero: The Kinetic Gallery ════════ */}
-      <section className="relative min-h-screen flex flex-col md:flex-row items-center justify-between px-8 md:px-16 py-24 pt-32 overflow-hidden bg-surface-base">
+      <section className="relative min-h-[75vh] flex flex-col md:flex-row items-center justify-between px-8 md:px-16 py-20 pt-28 overflow-hidden bg-surface-base">
         {/* Ambient blobs */}
         <div className="absolute top-20 -right-32 w-[420px] h-[420px] bg-primary-container/30 blob-bg -z-10 animate-float blur-2xl" />
         <div className="absolute bottom-32 -left-24 w-80 h-80 bg-secondary-container/20 blob-bg -z-10 animate-float-delayed blur-xl" />
