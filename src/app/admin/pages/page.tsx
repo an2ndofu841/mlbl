@@ -20,7 +20,7 @@ export default async function AdminPagesIndex() {
               <p className="font-medium text-gray-900">{p.title}</p>
               <p className="text-xs text-gray-400">{p.page_key}</p>
             </div>
-            <span className="text-sm text-red-600">編集 →</span>
+            <span className="text-sm text-teal-600">編集 →</span>
           </Link>
         ))}
       </div>

@@ -140,7 +140,7 @@ export function SpecialForm({
                 name="artist_id"
                 value={a.id}
                 defaultChecked={linked.has(a.id)}
-                className="w-4 h-4 text-red-600 border-gray-300 rounded"
+                className="w-4 h-4 text-teal-600 border-gray-300 rounded"
               />
               <span>{a.name}</span>
             </label>

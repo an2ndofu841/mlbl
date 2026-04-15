@@ -109,7 +109,7 @@ export function MediaLibrary() {
             onClick={() => setFolder(f)}
             className={`inline-flex items-center gap-1.5 px-4 py-2 text-sm rounded-lg transition-colors ${
               folder === f
-                ? 'bg-red-600 text-white font-medium'
+                ? 'bg-teal-600 text-white font-medium'
                 : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'
             }`}
           >
@@ -127,8 +127,8 @@ export function MediaLibrary() {
         onClick={() => inputRef.current?.click()}
         className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all ${
           dragOver
-            ? 'border-red-400 bg-red-50/50'
-            : 'border-gray-200 hover:border-red-300 hover:bg-red-50/20'
+            ? 'border-teal-400 bg-teal-50/50'
+            : 'border-gray-200 hover:border-teal-300 hover:bg-teal-50/20'
         }`}
       >
         <input
@@ -141,7 +141,7 @@ export function MediaLibrary() {
         />
         {isPending ? (
           <div className="flex flex-col items-center gap-3">
-            <div className="w-8 h-8 border-2 border-red-500 border-t-transparent rounded-full animate-spin" />
+            <div className="w-8 h-8 border-2 border-teal-500 border-t-transparent rounded-full animate-spin" />
             <span className="text-sm text-gray-500">アップロード中...</span>
           </div>
         ) : (
@@ -236,7 +236,7 @@ export function MediaLibrary() {
                 className="flex-1 px-3 py-1.5 text-xs text-gray-500 bg-gray-50 border border-gray-200 rounded"
                 onClick={(e) => (e.target as HTMLInputElement).select()} />
               <button type="button" onClick={() => handleCopy(previewUrl)}
-                className="px-3 py-1.5 text-xs font-medium text-white bg-red-600 rounded hover:bg-red-700 transition-colors">
+                className="px-3 py-1.5 text-xs font-medium text-white bg-teal-600 rounded hover:bg-teal-700 transition-colors">
                 {copiedUrl === previewUrl ? 'Copied!' : 'URLをコピー'}
               </button>
             </div>

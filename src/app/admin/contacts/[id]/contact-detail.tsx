@@ -50,7 +50,7 @@ export function ContactDetail({ contact }: { contact: Contact }) {
           <div>
             <dt className="text-gray-500">メール</dt>
             <dd>
-              <a href={`mailto:${contact.email}`} className="text-red-600 hover:underline">
+              <a href={`mailto:${contact.email}`} className="text-teal-600 hover:underline">
                 {contact.email}
               </a>
             </dd>
@@ -86,7 +86,7 @@ export function ContactDetail({ contact }: { contact: Contact }) {
           <button
             type="submit"
             disabled={pending}
-            className="px-6 py-2.5 bg-red-600 text-white text-sm font-medium rounded-md hover:bg-red-700 disabled:opacity-50"
+            className="px-6 py-2.5 bg-teal-600 text-white text-sm font-medium rounded-md hover:bg-teal-700 disabled:opacity-50"
           >
             {pending ? '更新中...' : 'ステータスを更新'}
           </button>

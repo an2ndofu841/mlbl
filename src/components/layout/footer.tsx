@@ -56,9 +56,7 @@ export function Footer({
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div>
             <Link href="/" className="inline-block">
-              <span className="text-2xl font-bold tracking-tight">
-                めしあが<span className="text-vermillion-light">レーベル</span>
-              </span>
+              <img src="/logo.png" alt="めしあがレーベル" className="h-14 w-auto brightness-0 invert" />
             </Link>
             <p className="mt-4 text-sm text-white/50 leading-relaxed">{tagline || '作品を、召し上がれ。'}</p>
             <div className="flex flex-wrap gap-5 mt-6">

@@ -18,7 +18,7 @@ export function AdminHeader() {
     <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">
       <div className="md:hidden">
         <span className="text-lg font-bold text-gray-900">
-          めしあが<span className="text-red-600">CMS</span>
+          めしあが<span className="text-teal-600">CMS</span>
         </span>
       </div>
       <div className="flex-1" />

@@ -83,7 +83,7 @@ export function TopSettingsForm({
                 name="pickup_content_id"
                 value={c.id}
                 defaultChecked={selected.has(c.id)}
-                className="mt-1 w-4 h-4 text-red-600 border-gray-300 rounded focus:ring-red-500"
+                className="mt-1 w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
               />
               <span>
                 <span className="font-medium text-gray-900">{c.title}</span>

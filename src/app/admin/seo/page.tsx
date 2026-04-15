@@ -31,7 +31,7 @@ export default async function AdminSeoPage() {
                 <p className="text-xs text-gray-400 font-mono">{p.page_key}</p>
                 {p.noindex && <span className="text-xs text-amber-600">noindex</span>}
               </div>
-              <Link href={`/admin/pages/${p.page_key}`} className="text-sm text-red-600 hover:underline shrink-0">
+              <Link href={`/admin/pages/${p.page_key}`} className="text-sm text-teal-600 hover:underline shrink-0">
                 編集
               </Link>
             </li>

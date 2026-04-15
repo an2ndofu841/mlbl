@@ -22,7 +22,7 @@ export function FormField({ label, name, required, children, className }: FieldP
   )
 }
 
-const inputClasses = 'w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 transition-colors'
+const inputClasses = 'w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-colors'
 
 export function FormInput(props: React.InputHTMLAttributes<HTMLInputElement>) {
   return <input {...props} className={cn(inputClasses, props.className)} />
@@ -39,7 +39,7 @@ export function FormSelect({ children, ...props }: React.SelectHTMLAttributes<HT
 export function FormCheckbox({ label, ...props }: React.InputHTMLAttributes<HTMLInputElement> & { label: string }) {
   return (
     <label className="flex items-center gap-2 cursor-pointer">
-      <input type="checkbox" {...props} className="w-4 h-4 text-red-600 border-gray-300 rounded focus:ring-red-500" />
+      <input type="checkbox" {...props} className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500" />
       <span className="text-sm text-gray-700">{label}</span>
     </label>
   )
@@ -57,7 +57,7 @@ export function FormActions({ isPending, cancelHref, submitLabel = '保存' }: F
       <button
         type="submit"
         disabled={isPending}
-        className="px-6 py-2.5 bg-red-600 text-white text-sm font-medium rounded-md hover:bg-red-700 transition-colors disabled:opacity-50"
+        className="px-6 py-2.5 bg-teal-600 text-white text-sm font-medium rounded-md hover:bg-teal-700 transition-colors disabled:opacity-50"
       >
         {isPending ? '保存中...' : submitLabel}
       </button>

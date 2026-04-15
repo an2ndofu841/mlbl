@@ -42,7 +42,7 @@ export function AdminSidebar() {
     <aside className="hidden md:flex w-60 flex-col bg-white border-r border-gray-200 shrink-0">
       <div className="h-16 flex items-center px-6 border-b border-gray-200">
         <Link href="/admin" className="text-lg font-bold text-gray-900">
-          めしあが<span className="text-red-600">CMS</span>
+          めしあが<span className="text-teal-600">CMS</span>
         </Link>
       </div>
 
@@ -57,7 +57,7 @@ export function AdminSidebar() {
               className={cn(
                 'flex items-center gap-3 px-3 py-2.5 text-sm rounded-md transition-colors',
                 isActive
-                  ? 'bg-red-50 text-red-700 font-medium'
+                  ? 'bg-teal-50 text-teal-700 font-medium'
                   : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
               )}
             >

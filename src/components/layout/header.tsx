@@ -101,9 +101,7 @@ export function Header({
     >
       <div className="mx-auto max-w-7xl px-6 flex items-center justify-between h-16 md:h-20">
         <Link href="/" className="relative z-50" onClick={() => setIsOpen(false)}>
-          <span className="text-xl md:text-2xl font-bold tracking-tight text-ink">
-            めしあが<span className="text-vermillion">レーベル</span>
-          </span>
+          <img src="/logo.png" alt="めしあがレーベル" className="h-10 md:h-12 w-auto" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">

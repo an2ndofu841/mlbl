@@ -82,7 +82,7 @@ export function ImageUploader({
           />
           {isPending && (
             <div className="absolute inset-0 bg-white/80 flex items-center justify-center">
-              <div className="w-6 h-6 border-2 border-red-500 border-t-transparent rounded-full animate-spin" />
+              <div className="w-6 h-6 border-2 border-teal-500 border-t-transparent rounded-full animate-spin" />
             </div>
           )}
           <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -101,7 +101,7 @@ export function ImageUploader({
           onDrop={handleDrop}
           onDragOver={(e) => e.preventDefault()}
           onClick={() => inputRef.current?.click()}
-          className="border-2 border-dashed border-gray-200 rounded-lg p-6 text-center cursor-pointer hover:border-red-300 hover:bg-red-50/30 transition-colors"
+          className="border-2 border-dashed border-gray-200 rounded-lg p-6 text-center cursor-pointer hover:border-teal-300 hover:bg-teal-50/30 transition-colors"
         >
           <input
             ref={inputRef}
@@ -115,7 +115,7 @@ export function ImageUploader({
           />
           {isPending ? (
             <div className="flex flex-col items-center gap-2">
-              <div className="w-6 h-6 border-2 border-red-500 border-t-transparent rounded-full animate-spin" />
+              <div className="w-6 h-6 border-2 border-teal-500 border-t-transparent rounded-full animate-spin" />
               <span className="text-xs text-gray-400">アップロード中...</span>
             </div>
           ) : (
@@ -186,10 +186,10 @@ export function ImageUploaderInline({
         type="button"
         disabled={isPending}
         onClick={() => inputRef.current?.click()}
-        className="inline-flex items-center gap-1 px-2 py-1 text-xs text-gray-500 hover:text-red-600 border border-gray-200 rounded hover:border-red-300 transition-colors disabled:opacity-50"
+        className="inline-flex items-center gap-1 px-2 py-1 text-xs text-gray-500 hover:text-teal-600 border border-gray-200 rounded hover:border-teal-300 transition-colors disabled:opacity-50"
       >
         {isPending ? (
-          <div className="w-3 h-3 border border-red-500 border-t-transparent rounded-full animate-spin" />
+          <div className="w-3 h-3 border border-teal-500 border-t-transparent rounded-full animate-spin" />
         ) : (
           <ImageIcon className="w-3 h-3" />
         )}
