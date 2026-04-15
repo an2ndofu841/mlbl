@@ -85,10 +85,10 @@ export default async function HomePage() {
                   <span className="text-on-secondary font-headline text-2xl md:text-3xl">★</span>
                 </div>
 
-                {/* Secondary photo */}
+                {/* Secondary video */}
                 <div className="col-span-1 row-span-2 bg-surface-low overflow-hidden rounded-2xl shadow-ambient translate-y-4">
                   <video
-                    src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
+                    src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
                     autoPlay muted loop playsInline
                     className="w-full h-full object-cover"
                   />
