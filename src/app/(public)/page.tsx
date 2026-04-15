@@ -26,79 +26,101 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* ════════ Hero: The Kinetic Gallery ════════ */}
-      <section className="relative flex flex-col md:flex-row items-center justify-between px-8 md:px-16 pt-28 md:pt-32 pb-12 md:pb-16 overflow-hidden bg-surface-base">
+      {/* ════════ Hero: Editorial Typography ════════ */}
+      <section className="relative pt-28 md:pt-32 pb-10 md:pb-14 overflow-hidden bg-surface-base">
         {/* Ambient blobs */}
-        <div className="absolute top-16 -right-24 w-72 h-72 bg-primary-container/30 blob-bg -z-10 animate-float blur-2xl" />
-        <div className="absolute bottom-16 -left-16 w-56 h-56 bg-secondary-container/20 blob-bg -z-10 animate-float-delayed blur-xl" />
-        <div className="absolute top-1/2 left-1/3 w-36 h-36 bg-tertiary-container/15 rounded-full -z-10 animate-pulse-soft blur-2xl" />
+        <div className="absolute top-16 -right-24 w-72 h-72 bg-primary-container/25 blob-bg -z-10 animate-float blur-3xl" />
+        <div className="absolute bottom-8 -left-16 w-56 h-56 bg-secondary-container/15 blob-bg -z-10 animate-float-delayed blur-2xl" />
 
         {settings?.hero_background_url && (
-          <img
-            src={settings.hero_background_url}
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover opacity-[0.04] -z-20"
-          />
+          <img src={settings.hero_background_url} alt=""
+            className="absolute inset-0 w-full h-full object-cover opacity-[0.04] -z-20" />
         )}
 
-        {/* Left: Typography */}
-        <div className="z-10 order-2 md:order-1 mt-8 md:mt-0 flex flex-col items-center md:items-start">
-          <h1 className="writing-vertical font-headline text-4xl md:text-6xl tracking-[0.12em] leading-snug text-on-surface">
-            {settings?.hero_title ? (
-              settings.hero_title
-            ) : (
-              <>心を、<br /><span className="text-primary">召し上がれ。</span></>
-            )}
-          </h1>
-          <p className="mt-6 md:mt-8 text-sm text-on-surface-variant max-w-xs leading-relaxed text-center md:text-left"
-            style={{ writingMode: 'horizontal-tb' }}
-          >
-            {settings?.hero_subtitle || '熱量と愛嬌で、エンタメを届けるレーベル。'}
-          </p>
-          <div className="flex gap-3 mt-6" style={{ writingMode: 'horizontal-tb' }}>
-            <CTAButton href={settings?.hero_cta_primary_url || '/talent'} variant="primary" size="sm">
-              {settings?.hero_cta_primary_text || 'Talents'}
-            </CTAButton>
-            <CTAButton href={settings?.hero_cta_secondary_url || '/about'} variant="outline" size="sm">
-              {settings?.hero_cta_secondary_text || 'About'}
-            </CTAButton>
+        <div className="mx-auto max-w-7xl px-6 md:px-12">
+          {/* Top label */}
+          <div className="flex items-center gap-3 mb-6 md:mb-8">
+            <span className="inline-block w-8 h-px bg-secondary" />
+            <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-secondary">
+              Creative Label
+            </span>
           </div>
-        </div>
 
-        {/* Right: Photo collage */}
-        <div className="relative w-full md:w-1/2 order-1 md:order-2 flex justify-center items-center mb-6 md:mb-0">
-          <div className="relative w-full max-w-md aspect-[4/3] md:rotate-1 hover:rotate-0 transition-transform duration-700">
-            <div className="absolute inset-0 grid grid-cols-4 grid-rows-3 gap-2 md:gap-3">
-              <div className="col-span-3 row-span-2 bg-surface-low overflow-hidden rounded-2xl shadow-ambient-lg">
-                {artists[0]?.profile_image_url ? (
-                  <img src={artists[0].profile_image_url} alt={artists[0].name}
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
+          {/* Main grid: Typography + Image */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-end">
+            {/* Headline area — spans 7 cols */}
+            <div className="md:col-span-7">
+              <h1 className="font-headline leading-[0.95] tracking-tight">
+                {settings?.hero_title ? (
+                  <span className="text-5xl md:text-7xl lg:text-8xl text-on-surface block">{settings.hero_title}</span>
                 ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-surface-low to-surface-mid flex items-center justify-center">
-                    <span className="font-headline text-4xl text-outline/10">め</span>
-                  </div>
+                  <>
+                    <span className="text-5xl md:text-7xl lg:text-8xl text-on-surface block">心を、</span>
+                    <span className="text-5xl md:text-7xl lg:text-8xl text-primary block mt-1">
+                      召し上がれ。
+                    </span>
+                  </>
                 )}
-              </div>
+              </h1>
 
-              <div className="col-span-1 row-span-1 bg-secondary overflow-hidden rounded-full rotate-6 flex items-center justify-center shadow-ambient">
-                <span className="text-on-secondary font-headline text-2xl">★</span>
-              </div>
+              <p className="mt-6 text-sm md:text-base text-on-surface-variant max-w-md leading-relaxed">
+                {settings?.hero_subtitle || '熱量と愛嬌で、エンタメを届けるレーベル。'}
+              </p>
 
-              <div className="col-span-1 row-span-2 bg-surface-low overflow-hidden rounded-xl shadow-ambient translate-y-4">
-                {artists[1]?.profile_image_url ? (
-                  <img src={artists[1].profile_image_url} alt={artists[1].name}
-                    className="w-full h-full object-cover" />
-                ) : (
-                  <div className="w-full h-full bg-gradient-to-b from-primary-container/40 to-surface-base" />
-                )}
-              </div>
-
-              <div className="col-span-2 row-span-1 bg-gradient-to-r from-primary to-primary-dim overflow-hidden rounded-full -translate-x-4 flex items-center justify-center p-3 shadow-ambient">
-                <span className="text-on-primary font-headline text-sm md:text-lg tracking-[0.4em] font-black uppercase">
-                  Label
-                </span>
+              <div className="flex items-center gap-4 mt-6">
+                <CTAButton href={settings?.hero_cta_primary_url || '/talent'} variant="primary" size="sm">
+                  {settings?.hero_cta_primary_text || 'Talents'}
+                </CTAButton>
+                <CTAButton href={settings?.hero_cta_secondary_url || '/about'} variant="outline" size="sm">
+                  {settings?.hero_cta_secondary_text || 'About'}
+                </CTAButton>
               </div>
             </div>
+
+            {/* Hero image — spans 5 cols */}
+            <div className="md:col-span-5 relative">
+              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-ambient-lg bg-surface-low group">
+                {artists[0]?.profile_image_url ? (
+                  <img src={artists[0].profile_image_url} alt={artists[0].name}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-surface-low to-surface-mid flex items-center justify-center">
+                    <span className="font-headline text-7xl text-outline/8">め</span>
+                  </div>
+                )}
+                {/* Pop-art accent bar */}
+                <div className="absolute left-0 top-8 bottom-8 w-1 bg-secondary rounded-r-full" />
+              </div>
+
+              {/* Floating artist name chip */}
+              {artists[0]?.name && (
+                <div className="absolute -bottom-3 -left-3 md:-left-6 glass rounded-2xl px-4 py-2.5 shadow-ambient">
+                  <span className="text-[10px] font-bold tracking-wider text-secondary uppercase block">Featured</span>
+                  <span className="text-sm font-bold text-on-surface">{artists[0].name}</span>
+                </div>
+              )}
+
+              {/* Small secondary image */}
+              {artists[1]?.profile_image_url && (
+                <div className="absolute -top-4 -right-4 md:-right-6 w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-ambient rotate-6 hover:rotate-0 transition-transform duration-500">
+                  <img src={artists[1].profile_image_url} alt={artists[1].name}
+                    className="w-full h-full object-cover" />
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Bottom ticker-style text */}
+          <div className="mt-8 md:mt-10 flex items-center gap-6 overflow-hidden opacity-[0.12]">
+            <span className="font-headline text-6xl md:text-8xl font-black tracking-tighter whitespace-nowrap text-on-surface">
+              MESHIAGA LABEL
+            </span>
+            <span className="font-headline text-6xl md:text-8xl font-black tracking-tighter whitespace-nowrap text-primary">
+              ★
+            </span>
+            <span className="font-headline text-6xl md:text-8xl font-black tracking-tighter whitespace-nowrap text-on-surface">
+              めしあがレーベル
+            </span>
           </div>
         </div>
       </section>
