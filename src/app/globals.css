@@ -1,27 +1,86 @@
 @import "tailwindcss";
 
 :root {
-  --color-cream: #FAF7F2;
-  --color-ink: #1A1A1A;
-  --color-ink-light: #4A4A4A;
-  --color-ink-muted: #8A8A8A;
-  --color-vermillion: #00a8b1;
-  --color-vermillion-dark: #008891;
-  --color-vermillion-light: #4DC9D0;
-  --color-gold: #ff6b81;
-  --color-gold-light: #ff8fa0;
-  --color-border: #E5E0D8;
-  --color-border-light: #F0EDE8;
-  --color-surface: #FFFFFF;
-  --color-surface-alt: #F5F2ED;
+  /* ─── Primary: Teal / Cyan ─── */
+  --color-primary: #00a8b1;
+  --color-primary-dim: #007a82;
+  --color-primary-container: #a7f0f5;
+  --color-on-primary: #ffffff;
+
+  /* ─── Secondary: Magenta ─── */
+  --color-secondary: #b50553;
+  --color-secondary-container: #ffd9e3;
+  --color-on-secondary: #ffffff;
+
+  /* ─── Tertiary: Golden Amber ─── */
+  --color-tertiary: #c8a000;
+  --color-tertiary-container: #ffe08a;
+  --color-on-tertiary: #3d2f00;
+
+  /* ─── Surfaces ─── */
+  --color-surface-base: #e6faff;
+  --color-surface-bright: #f0fdff;
+  --color-surface-lowest: #ffffff;
+  --color-surface-low: #d4f7ff;
+  --color-surface-mid: #c2f0fa;
+  --color-surface-high: #b0e8f5;
+  --color-surface-highest: #9ee0ef;
+
+  /* ─── On Surface ─── */
+  --color-on-surface: #00343c;
+  --color-on-surface-variant: #3f6068;
+
+  /* ─── Outline ─── */
+  --color-outline: #6f9099;
+  --color-outline-variant: #6f909926;
+
+  /* ─── Backward-compatible aliases ─── */
+  --color-cream: var(--color-surface-base);
+  --color-ink: var(--color-on-surface);
+  --color-ink-light: var(--color-on-surface-variant);
+  --color-ink-muted: var(--color-outline);
+  --color-vermillion: var(--color-primary);
+  --color-vermillion-dark: var(--color-primary-dim);
+  --color-vermillion-light: var(--color-primary-container);
+  --color-gold: var(--color-secondary);
+  --color-gold-light: var(--color-secondary-container);
+  --color-border: var(--color-outline-variant);
+  --color-border-light: #6f909914;
+  --color-surface: var(--color-surface-lowest);
+  --color-surface-alt: var(--color-surface-low);
 }
 
 @theme inline {
   --color-background: var(--color-cream);
   --color-foreground: var(--color-ink);
-  --font-sans: var(--font-geist-sans);
+
+  --font-sans: var(--font-manrope), var(--font-noto-sans-jp), sans-serif;
   --font-mono: var(--font-geist-mono);
   --font-headline: var(--font-noto-serif-jp), serif;
+  --font-body: var(--font-manrope), var(--font-noto-sans-jp), sans-serif;
+
+  --color-primary: var(--color-primary);
+  --color-primary-dim: var(--color-primary-dim);
+  --color-primary-container: var(--color-primary-container);
+  --color-on-primary: var(--color-on-primary);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-container: var(--color-secondary-container);
+  --color-on-secondary: var(--color-on-secondary);
+  --color-tertiary: var(--color-tertiary);
+  --color-tertiary-container: var(--color-tertiary-container);
+  --color-on-tertiary: var(--color-on-tertiary);
+  --color-surface-base: var(--color-surface-base);
+  --color-surface-bright: var(--color-surface-bright);
+  --color-surface-lowest: var(--color-surface-lowest);
+  --color-surface-low: var(--color-surface-low);
+  --color-surface-mid: var(--color-surface-mid);
+  --color-surface-high: var(--color-surface-high);
+  --color-surface-highest: var(--color-surface-highest);
+  --color-on-surface: var(--color-on-surface);
+  --color-on-surface-variant: var(--color-on-surface-variant);
+  --color-outline: var(--color-outline);
+  --color-outline-variant: var(--color-outline-variant);
+
   --color-cream: var(--color-cream);
   --color-ink: var(--color-ink);
   --color-ink-light: var(--color-ink-light);
@@ -38,26 +97,49 @@
 }
 
 body {
-  background: var(--color-cream);
-  color: var(--color-ink);
+  background: var(--color-surface-base);
+  color: var(--color-on-surface);
 }
 
 ::selection {
-  background-color: var(--color-vermillion);
+  background-color: var(--color-primary);
   color: white;
 }
 
-/* Vertical writing for Japanese headlines */
+/* ─── Glassmorphism ─── */
+.glass {
+  background: color-mix(in srgb, var(--color-surface-base) 70%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.glass-dark {
+  background: color-mix(in srgb, var(--color-on-surface) 70%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ─── Ambient Shadow (tinted, not dark) ─── */
+.shadow-ambient {
+  box-shadow: 0 8px 48px color-mix(in srgb, var(--color-on-surface) 5%, transparent);
+}
+
+.shadow-ambient-lg {
+  box-shadow: 0 16px 64px color-mix(in srgb, var(--color-on-surface) 8%, transparent);
+}
+
+/* ─── Vertical writing ─── */
 .writing-vertical {
   writing-mode: vertical-rl;
   text-orientation: mixed;
 }
 
-/* Organic blob shape */
+/* ─── Organic blob ─── */
 .blob-bg {
   border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
 }
 
+/* ─── Animations ─── */
 @keyframes float {
   0% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-20px) rotate(2deg); }
@@ -75,28 +157,46 @@ body {
   100% { transform: translateY(200%); }
 }
 
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .animate-float { animation: float 6s ease-in-out infinite; }
 .animate-float-delayed { animation: float-delayed 6s ease-in-out infinite; animation-delay: -3s; }
 .animate-scroll-line { animation: scroll-line 2s ease-in-out infinite; }
+.animate-pulse-soft { animation: pulse-soft 3s ease-in-out infinite; }
+.animate-slide-up { animation: slide-up 0.6s ease-out both; }
 
+/* ─── Rich Text ─── */
 .rich-text h2 {
+  font-family: var(--font-noto-serif-jp), serif;
   font-size: 1.5rem;
   font-weight: 700;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   line-height: 1.4;
+  color: var(--color-on-surface);
 }
 
 .rich-text h3 {
+  font-family: var(--font-noto-serif-jp), serif;
   font-size: 1.25rem;
   font-weight: 600;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
+  color: var(--color-on-surface);
 }
 
 .rich-text p {
   margin-bottom: 1.25rem;
   line-height: 1.9;
+  color: var(--color-on-surface-variant);
 }
 
 .rich-text ul, .rich-text ol {
@@ -110,26 +210,26 @@ body {
 }
 
 .rich-text blockquote {
-  border-left: 3px solid var(--color-vermillion);
+  border-left: 3px solid var(--color-secondary);
   padding-left: 1.25rem;
   margin: 1.5rem 0;
-  color: var(--color-ink-light);
+  color: var(--color-on-surface-variant);
   font-style: italic;
 }
 
 .rich-text img {
   max-width: 100%;
   height: auto;
-  border-radius: 0.25rem;
+  border-radius: 1rem;
   margin: 1.5rem 0;
 }
 
 .rich-text a {
-  color: var(--color-vermillion);
+  color: var(--color-primary);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .rich-text a:hover {
-  color: var(--color-vermillion-dark);
+  color: var(--color-primary-dim);
 }

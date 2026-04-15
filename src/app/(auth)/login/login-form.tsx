@@ -33,33 +33,33 @@ export function LoginForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {error && (
-        <div className="p-3 bg-vermillion/10 text-vermillion text-sm">{error}</div>
+        <div className="p-3 bg-secondary-container text-secondary text-sm rounded-xl">{error}</div>
       )}
 
       <div>
-        <label className="block text-sm font-medium text-ink mb-2">メールアドレス</label>
+        <label className="block text-sm font-medium text-on-surface mb-2">メールアドレス</label>
         <input
           type="email"
           name="email"
           required
-          className="w-full px-4 py-3 bg-surface border border-border text-ink text-sm focus:outline-none focus:border-vermillion"
+          className="w-full px-4 py-3 bg-surface-lowest text-on-surface text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:ring-offset-0 transition-shadow"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-ink mb-2">パスワード</label>
+        <label className="block text-sm font-medium text-on-surface mb-2">パスワード</label>
         <input
           type="password"
           name="password"
           required
-          className="w-full px-4 py-3 bg-surface border border-border text-ink text-sm focus:outline-none focus:border-vermillion"
+          className="w-full px-4 py-3 bg-surface-lowest text-on-surface text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:ring-offset-0 transition-shadow"
         />
       </div>
 
       <button
         type="submit"
         disabled={isPending}
-        className="w-full py-3 bg-ink text-white font-medium text-sm hover:bg-vermillion transition-colors disabled:opacity-50"
+        className="w-full py-3.5 bg-gradient-to-r from-primary to-primary-dim text-on-primary font-semibold text-sm rounded-full hover:scale-[1.02] transition-all disabled:opacity-50 shadow-ambient"
       >
         {isPending ? 'ログイン中...' : 'ログイン'}
       </button>

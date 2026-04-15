@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Noto_Sans_JP, Noto_Serif_JP, Inter } from 'next/font/google'
+import { Noto_Sans_JP, Noto_Serif_JP, Manrope } from 'next/font/google'
 import './globals.css'
 
 const notoSansJP = Noto_Sans_JP({
@@ -16,10 +16,10 @@ const notoSerifJP = Noto_Serif_JP({
   display: 'swap',
 })
 
-const inter = Inter({
-  variable: '--font-inter',
+const manrope = Manrope({
+  variable: '--font-manrope',
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600', '700', '800'],
   display: 'swap',
 })
 
@@ -45,8 +45,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ja" className={`${notoSansJP.variable} ${notoSerifJP.variable} ${inter.variable} h-full`}>
-      <body className="min-h-full flex flex-col font-[family-name:var(--font-noto-sans-jp)] antialiased">
+    <html lang="ja" className={`${notoSansJP.variable} ${notoSerifJP.variable} ${manrope.variable} h-full`}>
+      <body className="min-h-full flex flex-col font-body antialiased">
         {children}
       </body>
     </html>
