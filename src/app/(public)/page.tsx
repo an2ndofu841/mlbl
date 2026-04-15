@@ -42,17 +42,17 @@ export default async function HomePage() {
           />
         )}
 
-        <div className="flex flex-col md:grid md:grid-cols-[1fr_1.5fr] items-center gap-4 md:gap-8 px-6 md:px-12 lg:px-20 pt-24 md:pt-28 pb-8">
+        <div className="flex flex-row md:grid md:grid-cols-[1fr_1.5fr] items-center gap-4 md:gap-8 px-6 md:px-12 lg:px-20 pt-24 md:pt-28 pb-8">
           {/* Left: Typography — horizontal on SP, vertical on PC */}
-          <div className="z-10 flex flex-col items-center w-full">
-            <h1 className="font-headline text-on-surface hero-stagger-1 md:writing-vertical text-3xl md:text-5xl lg:text-[3.5rem] md:tracking-[0.12em] md:leading-snug text-center md:text-left tracking-tight leading-tight">
+          <div className="z-10 flex flex-col items-center shrink-0">
+            <h1 className="writing-vertical font-headline text-on-surface hero-stagger-1 text-3xl md:text-5xl lg:text-[3.5rem] tracking-[0.12em] leading-snug">
               {settings?.hero_title ? (
                 settings.hero_title
               ) : (
-                <>心を、<span className="text-primary">召し上がれ。</span></>
+                <>心を、<br /><span className="text-primary">召し上がれ。</span></>
               )}
             </h1>
-            <p className="mt-3 md:mt-6 text-sm md:text-base text-on-surface-variant max-w-xs leading-relaxed text-center hero-stagger-3">
+            <p className="mt-3 md:mt-6 text-xs md:text-base text-on-surface-variant max-w-[10rem] md:max-w-xs leading-relaxed text-center hero-stagger-3">
               {settings?.hero_subtitle || '熱量と愛嬌で、エンタメを届けるレーベル。'}
             </p>
             <div className="flex gap-3 mt-3 md:mt-4 hero-stagger-4">
@@ -66,8 +66,8 @@ export default async function HomePage() {
           </div>
 
           {/* Right: Photo collage */}
-          <div className="relative flex justify-center items-center hero-image-enter w-full">
-            <div className="relative w-full max-w-sm md:max-w-xl aspect-square md:rotate-1 hover:rotate-0 transition-transform duration-700">
+          <div className="relative flex justify-center items-center hero-image-enter flex-1 min-w-0">
+            <div className="relative w-full max-w-xl aspect-square md:rotate-1 hover:rotate-0 transition-transform duration-700">
               <div className="absolute inset-0 grid grid-cols-4 grid-rows-3 gap-2 md:gap-4">
                 {/* Main video/photo */}
                 <div className="col-span-3 row-span-2 bg-surface-low overflow-hidden rounded-3xl shadow-ambient-lg">
