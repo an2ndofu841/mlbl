@@ -74,7 +74,7 @@ export default async function HomePage() {
                 {/* Main video/photo */}
                 <div className="col-span-3 row-span-2 bg-surface-low overflow-hidden rounded-3xl shadow-ambient-lg">
                   <video
-                    src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td02.mp4"
+                    src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
                     autoPlay muted loop playsInline
                     className="w-full h-full object-cover"
                   />
