@@ -71,16 +71,13 @@ export default async function HomePage() {
           <div className="relative flex justify-center items-center hero-image-enter">
             <div className="relative w-full max-w-md lg:max-w-lg aspect-square md:rotate-1 hover:rotate-0 transition-transform duration-700">
               <div className="absolute inset-0 grid grid-cols-4 grid-rows-3 gap-2 md:gap-4">
-                {/* Main photo */}
+                {/* Main video/photo */}
                 <div className="col-span-3 row-span-2 bg-surface-low overflow-hidden rounded-3xl shadow-ambient-lg">
-                  {artists[0]?.profile_image_url ? (
-                    <img src={artists[0].profile_image_url} alt={artists[0].name}
-                      className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-surface-low to-surface-mid flex items-center justify-center">
-                      <span className="font-headline text-6xl text-outline/10">め</span>
-                    </div>
-                  )}
+                  <video
+                    src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td02.mp4"
+                    autoPlay muted loop playsInline
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 {/* Pop-art accent */}
