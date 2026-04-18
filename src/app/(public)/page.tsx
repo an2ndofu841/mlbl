@@ -42,42 +42,56 @@ export default async function HomePage() {
           />
         )}
 
-        {/* ── SP: Videos surrounding center text ── */}
-        <div className="md:hidden min-h-[calc(100dvh-4rem)] flex flex-col items-center justify-center px-4 pt-20 pb-10">
-          {/* Top row: small videos scattered */}
-          <div className="flex items-end justify-center gap-2 mb-3 hero-image-enter">
-            <div className="w-16 h-12 rounded-lg overflow-hidden shadow-ambient-lg -rotate-6">
+        {/* ── SP: Scattered videos around center text ── */}
+        <div className="md:hidden min-h-[calc(100dvh-4rem)] flex flex-col items-center justify-center px-4 pt-20 pb-10 relative">
+          {/* Scattered floating videos — absolute positioned */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-[12%] left-[4%] w-[72px] h-[56px] rounded-xl overflow-hidden shadow-ambient-lg -rotate-12 hero-image-enter opacity-80">
               <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
                 autoPlay muted loop playsInline className="w-full h-full object-cover" />
             </div>
-            <div className="w-12 h-12 rounded-full overflow-hidden shadow-ambient-lg rotate-3">
+            <div className="absolute top-[8%] right-[8%] w-[56px] h-[56px] rounded-full overflow-hidden shadow-ambient-lg rotate-6 hero-image-enter opacity-70">
               <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
                 autoPlay muted loop playsInline className="w-full h-full object-cover" />
             </div>
-            <div className="w-14 h-10 rounded-lg overflow-hidden shadow-ambient-lg rotate-6">
+            <div className="absolute top-[18%] right-[22%] w-[48px] h-[36px] rounded-lg overflow-hidden shadow-ambient rotate-12 hero-image-enter opacity-60">
               <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute top-[28%] left-[2%] w-[80px] h-[100px] rounded-2xl overflow-hidden shadow-ambient-lg rotate-3 hero-image-enter opacity-75">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute top-[30%] right-[2%] w-[88px] h-[64px] rounded-xl overflow-hidden shadow-ambient-lg -rotate-6 hero-image-enter opacity-80">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute top-[22%] left-[30%] w-[40px] h-[40px] rounded-full bg-secondary flex items-center justify-center shadow-ambient hero-image-enter">
+              <span className="text-on-secondary font-headline text-sm">★</span>
+            </div>
+            <div className="absolute bottom-[30%] left-[3%] w-[64px] h-[64px] rounded-full overflow-hidden shadow-ambient-lg -rotate-8 hero-image-enter opacity-70">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute bottom-[28%] right-[5%] w-[72px] h-[88px] rounded-2xl overflow-hidden shadow-ambient-lg rotate-8 hero-image-enter opacity-75">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute bottom-[18%] left-[18%] w-[56px] h-[42px] rounded-lg overflow-hidden shadow-ambient rotate-5 hero-image-enter opacity-60">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute bottom-[14%] right-[16%] w-[36px] h-[36px] rounded-full bg-primary flex items-center justify-center shadow-ambient animate-pulse-soft hero-image-enter">
+              <span className="text-on-primary font-headline text-xs">◆</span>
+            </div>
+            <div className="absolute bottom-[10%] left-[40%] w-[60px] h-[44px] rounded-xl overflow-hidden shadow-ambient -rotate-10 hero-image-enter opacity-65">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
                 autoPlay muted loop playsInline className="w-full h-full object-cover" />
             </div>
           </div>
 
-          {/* Main row: video - text - video */}
-          <div className="flex items-center justify-center gap-3 mb-3">
-            {/* Left videos */}
-            <div className="flex flex-col gap-2 items-end hero-image-enter">
-              <div className="w-20 h-16 rounded-xl overflow-hidden shadow-ambient-lg -rotate-3">
-                <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
-                  autoPlay muted loop playsInline className="w-full h-full object-cover" />
-              </div>
-              <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center shadow-ambient">
-                <span className="text-on-secondary font-headline text-lg">★</span>
-              </div>
-              <div className="w-16 h-20 rounded-xl overflow-hidden shadow-ambient-lg rotate-2">
-                <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
-                  autoPlay muted loop playsInline className="w-full h-full object-cover" />
-              </div>
-            </div>
-
-            {/* Center headline */}
+          {/* Center content */}
+          <div className="relative z-10 flex flex-col items-center">
             <h1 className="writing-vertical font-headline text-4xl tracking-[0.12em] leading-snug text-on-surface hero-stagger-1 shrink-0">
               {settings?.hero_title ? (
                 settings.hero_title
@@ -85,54 +99,21 @@ export default async function HomePage() {
                 <>心を、<br /><span className="text-primary">召し上がれ。</span></>
               )}
             </h1>
-
-            {/* Right videos */}
-            <div className="flex flex-col gap-2 items-start hero-image-enter">
-              <div className="w-18 h-14 rounded-xl overflow-hidden shadow-ambient-lg rotate-4">
-                <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
-                  autoPlay muted loop playsInline className="w-full h-full object-cover" />
-              </div>
-              <div className="w-20 h-24 rounded-xl overflow-hidden shadow-ambient-lg -rotate-2">
-                <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
-                  autoPlay muted loop playsInline className="w-full h-full object-cover" />
-              </div>
-              <div className="w-14 h-14 rounded-full overflow-hidden shadow-ambient-lg rotate-6">
-                <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
-                  autoPlay muted loop playsInline className="w-full h-full object-cover" />
-              </div>
+            <p className="text-xs text-on-surface-variant leading-relaxed text-center hero-stagger-3 mt-6">
+              {settings?.hero_subtitle || '熱量と愛嬌で、エンタメを届けるレーベル。'}
+            </p>
+            <div className="flex gap-3 mt-4 hero-stagger-4">
+              <CTAButton href={settings?.hero_cta_primary_url || '/talent'} variant="primary" size="sm">
+                {settings?.hero_cta_primary_text || 'Talents'}
+              </CTAButton>
+              <CTAButton href={settings?.hero_cta_secondary_url || '/about'} variant="outline" size="sm">
+                {settings?.hero_cta_secondary_text || 'About'}
+              </CTAButton>
             </div>
-          </div>
-
-          {/* Bottom row: more small videos */}
-          <div className="flex items-start justify-center gap-2 mb-4 hero-image-enter">
-            <div className="w-14 h-10 rounded-lg overflow-hidden shadow-ambient-lg rotate-3">
-              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
-                autoPlay muted loop playsInline className="w-full h-full object-cover" />
-            </div>
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center shadow-ambient">
-              <span className="text-on-primary font-headline text-sm">◆</span>
-            </div>
-            <div className="w-18 h-12 rounded-lg overflow-hidden shadow-ambient-lg -rotate-4">
-              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
-                autoPlay muted loop playsInline className="w-full h-full object-cover" />
-            </div>
-          </div>
-
-          {/* Subtitle + CTA below */}
-          <p className="text-xs text-on-surface-variant leading-relaxed text-center hero-stagger-3">
-            {settings?.hero_subtitle || '熱量と愛嬌で、エンタメを届けるレーベル。'}
-          </p>
-          <div className="flex gap-3 mt-4 hero-stagger-4">
-            <CTAButton href={settings?.hero_cta_primary_url || '/talent'} variant="primary" size="sm">
-              {settings?.hero_cta_primary_text || 'Talents'}
-            </CTAButton>
-            <CTAButton href={settings?.hero_cta_secondary_url || '/about'} variant="outline" size="sm">
-              {settings?.hero_cta_secondary_text || 'About'}
-            </CTAButton>
           </div>
         </div>
 
-        {/* ── PC: Side-by-side grid ── */}
+        {/* ── PC: Organic scattered layout ── */}
         <div className="hidden md:grid md:grid-cols-[1fr_1.8fr] items-center gap-8 px-12 lg:px-20 pt-28 pb-8">
           <div className="z-10 flex flex-col items-center">
             <h1 className="writing-vertical font-headline text-5xl lg:text-[3.5rem] tracking-[0.12em] leading-snug text-on-surface hero-stagger-1">
@@ -155,48 +136,49 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="relative flex justify-center items-center hero-image-enter">
-            <div className="relative w-full max-w-2xl aspect-[4/3]">
-              <div className="absolute inset-0 grid grid-cols-5 grid-rows-4 gap-3">
-                {/* Large main video */}
-                <div className="col-span-3 row-span-2 bg-surface-low overflow-hidden rounded-3xl shadow-ambient-lg rotate-1 hover:rotate-0 transition-transform duration-700">
-                  <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
-                    autoPlay muted loop playsInline className="w-full h-full object-cover" />
-                </div>
-                {/* Top-right tall */}
-                <div className="col-span-2 row-span-3 bg-surface-low overflow-hidden rounded-2xl shadow-ambient -rotate-1 hover:rotate-0 transition-transform duration-700">
-                  <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
-                    autoPlay muted loop playsInline className="w-full h-full object-cover" />
-                </div>
-                {/* Star accent */}
-                <div className="col-span-1 row-span-1 bg-secondary overflow-hidden rounded-full rotate-6 flex items-center justify-center shadow-ambient">
-                  <span className="text-on-secondary font-headline text-2xl">★</span>
-                </div>
-                {/* Wide panoramic video */}
-                <div className="col-span-2 row-span-1 overflow-hidden rounded-full shadow-ambient hover:scale-105 transition-transform duration-500">
-                  <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
-                    autoPlay muted loop playsInline className="w-full h-full object-cover" />
-                </div>
-                {/* Bottom-left square */}
-                <div className="col-span-1 row-span-1 bg-surface-low overflow-hidden rounded-xl shadow-ambient rotate-3 hover:rotate-0 transition-transform duration-700">
-                  <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
-                    autoPlay muted loop playsInline className="w-full h-full object-cover" />
-                </div>
-                {/* Bottom wide video */}
-                <div className="col-span-2 row-span-1 bg-surface-low overflow-hidden rounded-2xl shadow-ambient-lg -rotate-1 hover:rotate-0 transition-transform duration-700">
-                  <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
-                    autoPlay muted loop playsInline className="w-full h-full object-cover" />
-                </div>
-                {/* Primary accent circle */}
-                <div className="col-span-1 row-span-1 bg-primary overflow-hidden rounded-full flex items-center justify-center shadow-ambient animate-pulse-soft">
-                  <span className="text-on-primary font-headline text-xl">◆</span>
-                </div>
-                {/* Bottom-right small video */}
-                <div className="col-span-1 row-span-1 bg-surface-low overflow-hidden rounded-full shadow-ambient rotate-2 hover:scale-110 transition-transform duration-500">
-                  <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
-                    autoPlay muted loop playsInline className="w-full h-full object-cover" />
-                </div>
-              </div>
+          <div className="relative hero-image-enter" style={{ height: '520px' }}>
+            {/* Hero video — large tilted */}
+            <div className="absolute top-[2%] left-[8%] w-[52%] h-[44%] rounded-3xl overflow-hidden shadow-ambient-lg -rotate-3 hover:rotate-0 transition-transform duration-700 z-[3]">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
+            </div>
+            {/* Tall portrait — top right */}
+            <div className="absolute top-[0%] right-[4%] w-[30%] h-[55%] rounded-2xl overflow-hidden shadow-ambient-lg rotate-5 hover:rotate-1 transition-transform duration-700 z-[2]">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
+            </div>
+            {/* Circle — overlapping middle */}
+            <div className="absolute top-[36%] left-[3%] w-[110px] h-[110px] rounded-full overflow-hidden shadow-ambient-lg rotate-6 hover:scale-110 transition-transform duration-500 z-[4]">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
+            </div>
+            {/* Star accent — floating */}
+            <div className="absolute top-[28%] left-[50%] w-[52px] h-[52px] rounded-full bg-secondary flex items-center justify-center shadow-ambient-lg -rotate-12 z-[5] animate-float">
+              <span className="text-on-secondary font-headline text-xl">★</span>
+            </div>
+            {/* Wide landscape — middle */}
+            <div className="absolute top-[50%] left-[18%] w-[48%] h-[28%] rounded-[1.5rem] overflow-hidden shadow-ambient-lg rotate-2 hover:-rotate-1 transition-transform duration-700 z-[3]">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
+            </div>
+            {/* Small tilted — right mid */}
+            <div className="absolute top-[58%] right-[2%] w-[26%] h-[22%] rounded-xl overflow-hidden shadow-ambient rotate-8 hover:rotate-2 transition-transform duration-700 z-[2]">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
+            </div>
+            {/* Diamond accent */}
+            <div className="absolute top-[72%] left-[6%] w-[44px] h-[44px] rounded-xl bg-primary flex items-center justify-center shadow-ambient rotate-45 z-[5] animate-float-delayed">
+              <span className="text-on-primary font-headline text-sm -rotate-45">◆</span>
+            </div>
+            {/* Bottom-left pill */}
+            <div className="absolute bottom-[2%] left-[12%] w-[36%] h-[18%] rounded-full overflow-hidden shadow-ambient-lg -rotate-4 hover:rotate-0 transition-transform duration-700 z-[2]">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
+            </div>
+            {/* Bottom-right small circle */}
+            <div className="absolute bottom-[4%] right-[10%] w-[90px] h-[90px] rounded-full overflow-hidden shadow-ambient-lg -rotate-6 hover:scale-110 transition-transform duration-500 z-[4]">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -211,13 +193,8 @@ export default async function HomePage() {
       </section>
 
       {/* ════════ About Concept ════════ */}
-      <section className="px-8 md:px-16 py-28 md:py-36 bg-surface-low relative overflow-hidden">
+      <section className="px-8 md:px-16 py-20 md:py-24 bg-surface-low relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <AnimateIn>
-            <span className="inline-block px-5 py-2 rounded-full bg-secondary-container text-secondary font-bold text-[11px] tracking-[0.2em] uppercase mb-8">
-              Concept
-            </span>
-          </AnimateIn>
           <AnimateIn delay={150}>
             <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl leading-tight mb-12 text-on-surface">
               {settings?.about_intro_title || (
@@ -245,7 +222,7 @@ export default async function HomePage() {
 
       {/* ════════ Pick Up Contents — The Idea Tray ════════ */}
       {contents.length > 0 && (
-        <section className="px-8 md:px-16 py-28 md:py-36 bg-surface-base">
+        <section className="px-8 md:px-16 py-20 md:py-24 bg-surface-base">
           <AnimateIn>
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 gap-4">
               <div>
@@ -308,7 +285,7 @@ export default async function HomePage() {
 
       {/* ════════ Special Banner (only when specials exist) ════════ */}
       {specials.length > 0 && (
-        <section className="px-4 md:px-16 py-28 md:py-36">
+        <section className="px-4 md:px-16 py-20 md:py-24">
           <AnimateIn>
             <div className="relative w-full h-[450px] md:h-[550px] overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem] group shadow-ambient-lg">
               {specials[0].thumbnail_url || specials[0].hero_image_url ? (
@@ -344,7 +321,7 @@ export default async function HomePage() {
 
       {/* ════════ Talents — Pop-Art Frames ════════ */}
       {artists.length > 0 && (
-        <section className="px-8 md:px-16 py-28 md:py-36 bg-surface-low rounded-[2rem] md:rounded-[3.5rem] mx-4 md:mx-8">
+        <section className="px-8 md:px-16 py-20 md:py-24 bg-surface-low rounded-[2rem] md:rounded-[3.5rem] mx-4 md:mx-8">
           <AnimateIn>
             <div className="text-center mb-20">
               <span className="font-bold text-[11px] tracking-[0.4em] uppercase text-secondary mb-4 block">Creative Minds</span>
