@@ -42,10 +42,26 @@ export default async function HomePage() {
           />
         )}
 
-        {/* ── SP: Videos flanking center text ── */}
+        {/* ── SP: Videos surrounding center text ── */}
         <div className="md:hidden min-h-[calc(100dvh-4rem)] flex flex-col items-center justify-center px-4 pt-20 pb-10">
+          {/* Top row: small videos scattered */}
+          <div className="flex items-end justify-center gap-2 mb-3 hero-image-enter">
+            <div className="w-16 h-12 rounded-lg overflow-hidden shadow-ambient-lg -rotate-6">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
+            </div>
+            <div className="w-12 h-12 rounded-full overflow-hidden shadow-ambient-lg rotate-3">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
+            </div>
+            <div className="w-14 h-10 rounded-lg overflow-hidden shadow-ambient-lg rotate-6">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
+            </div>
+          </div>
+
           {/* Main row: video - text - video */}
-          <div className="flex items-center justify-center gap-3 mb-4">
+          <div className="flex items-center justify-center gap-3 mb-3">
             {/* Left videos */}
             <div className="flex flex-col gap-2 items-end hero-image-enter">
               <div className="w-20 h-16 rounded-xl overflow-hidden shadow-ambient-lg -rotate-3">
@@ -54,6 +70,10 @@ export default async function HomePage() {
               </div>
               <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center shadow-ambient">
                 <span className="text-on-secondary font-headline text-lg">★</span>
+              </div>
+              <div className="w-16 h-20 rounded-xl overflow-hidden shadow-ambient-lg rotate-2">
+                <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
+                  autoPlay muted loop playsInline className="w-full h-full object-cover" />
               </div>
             </div>
 
@@ -68,14 +88,33 @@ export default async function HomePage() {
 
             {/* Right videos */}
             <div className="flex flex-col gap-2 items-start hero-image-enter">
-              <div className="w-24 h-18 rounded-xl overflow-hidden shadow-ambient-lg rotate-3">
+              <div className="w-18 h-14 rounded-xl overflow-hidden shadow-ambient-lg rotate-4">
                 <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
                   autoPlay muted loop playsInline className="w-full h-full object-cover" />
               </div>
-              <div className="w-20 h-24 rounded-xl overflow-hidden shadow-ambient-lg rotate-2">
+              <div className="w-20 h-24 rounded-xl overflow-hidden shadow-ambient-lg -rotate-2">
                 <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
                   autoPlay muted loop playsInline className="w-full h-full object-cover" />
               </div>
+              <div className="w-14 h-14 rounded-full overflow-hidden shadow-ambient-lg rotate-6">
+                <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
+                  autoPlay muted loop playsInline className="w-full h-full object-cover" />
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom row: more small videos */}
+          <div className="flex items-start justify-center gap-2 mb-4 hero-image-enter">
+            <div className="w-14 h-10 rounded-lg overflow-hidden shadow-ambient-lg rotate-3">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
+            </div>
+            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center shadow-ambient">
+              <span className="text-on-primary font-headline text-sm">◆</span>
+            </div>
+            <div className="w-18 h-12 rounded-lg overflow-hidden shadow-ambient-lg -rotate-4">
+              <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
+                autoPlay muted loop playsInline className="w-full h-full object-cover" />
             </div>
           </div>
 
@@ -94,7 +133,7 @@ export default async function HomePage() {
         </div>
 
         {/* ── PC: Side-by-side grid ── */}
-        <div className="hidden md:grid md:grid-cols-[1fr_1.5fr] items-center gap-8 px-12 lg:px-20 pt-28 pb-8">
+        <div className="hidden md:grid md:grid-cols-[1fr_1.8fr] items-center gap-8 px-12 lg:px-20 pt-28 pb-8">
           <div className="z-10 flex flex-col items-center">
             <h1 className="writing-vertical font-headline text-5xl lg:text-[3.5rem] tracking-[0.12em] leading-snug text-on-surface hero-stagger-1">
               {settings?.hero_title ? (
@@ -117,21 +156,44 @@ export default async function HomePage() {
           </div>
 
           <div className="relative flex justify-center items-center hero-image-enter">
-            <div className="relative w-full max-w-xl aspect-square rotate-1 hover:rotate-0 transition-transform duration-700">
-              <div className="absolute inset-0 grid grid-cols-4 grid-rows-3 gap-4">
-                <div className="col-span-3 row-span-2 bg-surface-low overflow-hidden rounded-3xl shadow-ambient-lg">
+            <div className="relative w-full max-w-2xl aspect-[4/3]">
+              <div className="absolute inset-0 grid grid-cols-5 grid-rows-4 gap-3">
+                {/* Large main video */}
+                <div className="col-span-3 row-span-2 bg-surface-low overflow-hidden rounded-3xl shadow-ambient-lg rotate-1 hover:rotate-0 transition-transform duration-700">
                   <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
                     autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 </div>
-                <div className="col-span-1 row-span-1 bg-secondary overflow-hidden rounded-full rotate-6 flex items-center justify-center shadow-ambient">
-                  <span className="text-on-secondary font-headline text-3xl">★</span>
-                </div>
-                <div className="col-span-1 row-span-2 bg-surface-low overflow-hidden rounded-2xl shadow-ambient translate-y-4">
+                {/* Top-right tall */}
+                <div className="col-span-2 row-span-3 bg-surface-low overflow-hidden rounded-2xl shadow-ambient -rotate-1 hover:rotate-0 transition-transform duration-700">
                   <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
                     autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 </div>
-                <div className="col-span-2 row-span-1 overflow-hidden rounded-full -translate-x-4 shadow-ambient">
+                {/* Star accent */}
+                <div className="col-span-1 row-span-1 bg-secondary overflow-hidden rounded-full rotate-6 flex items-center justify-center shadow-ambient">
+                  <span className="text-on-secondary font-headline text-2xl">★</span>
+                </div>
+                {/* Wide panoramic video */}
+                <div className="col-span-2 row-span-1 overflow-hidden rounded-full shadow-ambient hover:scale-105 transition-transform duration-500">
                   <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
+                    autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                </div>
+                {/* Bottom-left square */}
+                <div className="col-span-1 row-span-1 bg-surface-low overflow-hidden rounded-xl shadow-ambient rotate-3 hover:rotate-0 transition-transform duration-700">
+                  <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/td03.mp4"
+                    autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                </div>
+                {/* Bottom wide video */}
+                <div className="col-span-2 row-span-1 bg-surface-low overflow-hidden rounded-2xl shadow-ambient-lg -rotate-1 hover:rotate-0 transition-transform duration-700">
+                  <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/winordie01.mp4"
+                    autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                </div>
+                {/* Primary accent circle */}
+                <div className="col-span-1 row-span-1 bg-primary overflow-hidden rounded-full flex items-center justify-center shadow-ambient animate-pulse-soft">
+                  <span className="text-on-primary font-headline text-xl">◆</span>
+                </div>
+                {/* Bottom-right small video */}
+                <div className="col-span-1 row-span-1 bg-surface-low overflow-hidden rounded-full shadow-ambient rotate-2 hover:scale-110 transition-transform duration-500">
+                  <video src="https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos/sgm01.mp4"
                     autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 </div>
               </div>
