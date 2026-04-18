@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
-import { PageHeader } from '@/components/ui/page-header'
 import { CTAButton } from '@/components/ui/cta-button'
 import { getPage } from '@/lib/queries'
 import { buildDetailMetadata } from '@/lib/seo'
 import { Building2, MapPin, Mail, Globe, Calendar, Users, Briefcase } from 'lucide-react'
+
+const VIDEO_BASE = 'https://ltzcmmvaeemmwqukpzcw.supabase.co/storage/v1/object/public/cms-videos'
 
 const COMPANY_INFO = [
   { label: '会社名', value: '株式会社めしあがレーベル' },
@@ -13,7 +14,7 @@ const COMPANY_INFO = [
     value:
       'タレントマネジメント / コンテンツ企画・制作 / イベント企画・運営 / メディア運営 / 広告・プロモーション支援 / SNSマーケティング',
   },
-  { label: 'メール', value: 'info@meshiaga-label.com' },
+  { label: 'メール', value: 'info@mlbl.co.jp' },
 ]
 
 const SERVICES = [
@@ -64,14 +65,115 @@ export default async function CompanyPage() {
 
   return (
     <>
-      <PageHeader
-        title={page?.title || 'COMPANY'}
-        subtitle="Company Info"
-        description={
-          page?.seo_description ||
-          '株式会社めしあがレーベルの会社情報をご紹介します。'
-        }
-      />
+      {/* ════════ Hero: Cinematic FV ════════ */}
+      <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden bg-on-surface">
+        {/* Background video mosaic */}
+        <div className="absolute inset-0 grid grid-cols-3 md:grid-cols-4 grid-rows-2 gap-1 opacity-25">
+          <div className="col-span-2 row-span-2 overflow-hidden">
+            <video
+              src={`${VIDEO_BASE}/td03.mp4`}
+              autoPlay muted loop playsInline
+              className="w-full h-full object-cover scale-110"
+            />
+          </div>
+          <div className="overflow-hidden">
+            <video
+              src={`${VIDEO_BASE}/sgm01.mp4`}
+              autoPlay muted loop playsInline
+              className="w-full h-full object-cover scale-110"
+            />
+          </div>
+          <div className="hidden md:block overflow-hidden">
+            <video
+              src={`${VIDEO_BASE}/winordie01.mp4`}
+              autoPlay muted loop playsInline
+              className="w-full h-full object-cover scale-110"
+            />
+          </div>
+          <div className="overflow-hidden">
+            <video
+              src={`${VIDEO_BASE}/winordie01.mp4`}
+              autoPlay muted loop playsInline
+              className="w-full h-full object-cover scale-110"
+            />
+          </div>
+          <div className="hidden md:block overflow-hidden">
+            <video
+              src={`${VIDEO_BASE}/td03.mp4`}
+              autoPlay muted loop playsInline
+              className="w-full h-full object-cover scale-110"
+            />
+          </div>
+        </div>
+
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-on-surface/60 via-on-surface/70 to-on-surface" />
+        <div className="absolute inset-0 bg-gradient-to-r from-on-surface/40 to-transparent" />
+
+        {/* Floating video cards */}
+        <div className="absolute top-28 right-8 md:top-32 md:right-20 w-28 h-20 md:w-44 md:h-28 rounded-2xl overflow-hidden shadow-ambient-lg rotate-6 hero-image-enter opacity-80">
+          <video
+            src={`${VIDEO_BASE}/sgm01.mp4`}
+            autoPlay muted loop playsInline
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="absolute bottom-32 right-12 md:bottom-40 md:right-32 w-24 h-24 md:w-36 md:h-36 rounded-full overflow-hidden shadow-ambient-lg -rotate-3 hero-image-enter opacity-70">
+          <video
+            src={`${VIDEO_BASE}/winordie01.mp4`}
+            autoPlay muted loop playsInline
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="hidden md:block absolute top-1/2 right-48 w-32 h-20 rounded-xl overflow-hidden shadow-ambient-lg rotate-2 hero-image-enter opacity-60">
+          <video
+            src={`${VIDEO_BASE}/td03.mp4`}
+            autoPlay muted loop playsInline
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="absolute bottom-24 left-6 md:bottom-32 md:left-16 w-20 h-28 md:w-28 md:h-40 rounded-2xl overflow-hidden shadow-ambient-lg rotate-3 hero-image-enter opacity-60">
+          <video
+            src={`${VIDEO_BASE}/td03.mp4`}
+            autoPlay muted loop playsInline
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Ambient blobs */}
+        <div className="absolute top-20 left-1/4 w-72 h-72 bg-primary/20 rounded-full blur-[100px] animate-float" />
+        <div className="absolute bottom-20 right-1/4 w-64 h-64 bg-secondary/15 rounded-full blur-[80px] animate-float-delayed" />
+
+        {/* Hero text */}
+        <div className="relative z-10 mx-auto max-w-5xl px-6 md:px-12 pt-32 pb-20">
+          <p className="text-[11px] tracking-[0.4em] uppercase text-primary-container font-bold mb-6 hero-stagger-1">
+            Company
+          </p>
+          <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] tracking-tight hero-stagger-2">
+            {page?.title || (
+              <>
+                作品を、
+                <br />
+                <span className="text-primary-container">召し上がれ。</span>
+              </>
+            )}
+          </h1>
+          <p className="mt-8 text-base md:text-lg text-white/60 leading-relaxed max-w-lg hero-stagger-3">
+            {page?.seo_description ||
+              'エンタメの力で企業と人をつなぐ。株式会社めしあがレーベルの会社情報をご紹介します。'}
+          </p>
+
+          {/* Scroll indicator */}
+          <div className="flex items-center gap-3 mt-16 hero-stagger-4">
+            <div className="w-12 h-px bg-white/20 rounded-full overflow-hidden">
+              <div className="w-1/2 h-full bg-primary-container animate-scroll-line" />
+            </div>
+            <span className="text-[10px] tracking-[0.3em] uppercase text-white/30 font-semibold">
+              Scroll
+            </span>
+          </div>
+        </div>
+      </section>
 
       {/* ── 会社概要テーブル ── */}
       <section className="py-24 bg-surface">
@@ -230,7 +332,7 @@ export default async function CompanyPage() {
                     メール
                   </p>
                   <p className="text-base text-on-surface-variant leading-relaxed">
-                    info@meshiaga-label.com
+                    info@mlbl.co.jp
                   </p>
                 </div>
               </div>
